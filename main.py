@@ -3,7 +3,7 @@ from Tablet import Tablet
 from MainWindow import MainWindow
 
 window = MainWindow()
-tablet = Tablet()
+tablet = Tablet(window=window)
 
 @window.event
 def on_draw():
@@ -11,6 +11,7 @@ def on_draw():
 
 @window.event
 def on_mouse_press(x, y, button, modifiers):
+    tablet.process()
     print(x,y,button)
 
 @tablet.control_presion.event
