@@ -23,7 +23,10 @@ class Tablet(pyglet.input.Device):
         except pyglet.input.DeviceException:
             print('Failed to open tablet %d on window')
     
-    def process(self) -> None:
-        return ()
-        print(self.control_x.value, self.control_y.value, self.control_presion.value)
+    def get_data(self) -> TabletData:
+        return TabletData(
+            x_pos=self.control_x,
+            y_pos=self.control_y,
+            presion=self.control_presion
+        )
     
