@@ -1,26 +1,24 @@
-import pyglet
-from Adapter.Tablet import Tablet
-from Adapter.MainWindow import MainWindow
+import aggdraw
+from PIL import Image
+from LineArtTrainer.StraightLines import StraightLineGenerator
+from LineArtTrainer.RandomCurvedLines import RandomCurvedLinesGenerator
+from Scorer.ManhattenDistCalculator import ManhattanDistanceCalculator
 
-window = MainWindow()
-tablet = Tablet(window=window)
+def main() -> None:
+    img = Image.new(mode="RGB", size=(2480, 3580), color=(255, 255, 255)) # last part is image dimensions
 
-
-@window.event
-def on_draw():
-    window.resize()
-
-
-@window.event
-def on_mouse_press(x, y, button, modifiers):
-    print(x, y, button)
+    rclg = RandomCurvedLinesGenerator()
+    rclg.draw_random_curved_lines(img, img)
 
 
-@tablet.control_presion.event
-@tablet.control_x.event
-@tablet.control_y.event
-def on_change(presion):
-    tablet.get_data()
+    img_answer = Image.open("task.gif")
+    rgb_img_answer = img_answer.convert('RGB')
+    md_scorer = ManhattanDistanceCalculator()
+    md_scorer.score_black_white(img, rgb_img_answer)
+
+    #img.show()
 
 
-pyglet.app.run()
+
+if __name__ == "__main__":
+    main()
