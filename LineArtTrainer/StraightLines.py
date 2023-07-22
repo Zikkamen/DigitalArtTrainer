@@ -6,7 +6,7 @@ class StraightLineGenerator:
     def __int__(self) -> None:
         pass
 
-    def generate_random_straight_lines(self):
+    def generate_random_straight_lines(self) -> None:
         img_task = Image.new(mode="RGB", size=(2480, 3580), color=(255, 255, 255))
         img_task_view = Image.new(mode="RGB", size=(2480, 3580), color=(255, 255, 255))
         img_answer = Image.new(mode="RGB", size=(2480, 3580), color=(255, 255, 255))

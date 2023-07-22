@@ -28,7 +28,7 @@ class RandomLines:
 
             draw_answer.line(pos1 + pos2, fill=(0, 0, 0), width=10)
 
-    def draw_crosses(self, canvas: PIL.ImageDraw.ImageDraw, pos1: tuple, pos2: tuple, length: int, color: tuple):
+    def draw_crosses(self, canvas: PIL.ImageDraw.ImageDraw, pos1: tuple, pos2: tuple, length: int, color: tuple) -> None:
         canvas.line((pos1[0] + length, pos1[1] + length, pos1[0] - length, pos1[1] - length), fill=tuple(color), width=10)
         canvas.line((pos1[0] - length, pos1[1] + length, pos1[0] + length, pos1[1] - length), fill=tuple(color), width=10)
         canvas.line((pos2[0] + length, pos2[1] + length, pos2[0] - length, pos2[1] - length), fill=tuple(color), width=10)
