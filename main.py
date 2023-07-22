@@ -1,8 +1,7 @@
-import aggdraw
 from PIL import Image
-from LineArtTrainer.StraightLines import StraightLineGenerator
-from LineArtTrainer.RandomCurvedLines import RandomCurvedLinesGenerator
-from Scorer.ManhattenDistCalculator import ManhattanDistanceCalculator
+from Trainers.LineArt import StraightLineGenerator
+from Trainers.LineArt.RandomCurvedLines import RandomCurvedLinesGenerator
+
 
 def main() -> None:
     img = Image.new(mode="RGB", size=(2480, 3580), color=(255, 255, 255)) # last part is image dimensions
