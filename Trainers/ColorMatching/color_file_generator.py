@@ -15,12 +15,37 @@ def generate_hue_random_number() -> np.array:
     return color
 
 
+class DarknessColorGenerator:
+    def __init__(self) -> None:
+        self.hue = generate_hue_random_number()
+
+    def generate_darkness_color(self) -> np.array:
+        alpha = random.random()
+
+        return np.int32(alpha * (self.hue + 0.5))
+
+
+class SaturationColorGenerator:
+    def __init__(self) -> None:
+        self.hue = generate_hue_random_number()
+        self.diff = np.array([255, 255, 255]) - self.hue
+
+    def generate_saturation_color(self) -> np.array:
+        alpha = random.random()
+
+        return self.hue + np.int32(self.diff * alpha + 0.5)
+
+
 class ColorMatcherGenerator:
     def __init__(self) -> None:
+        self.darkness_generator = DarknessColorGenerator()
+        self.saturation_generator = SaturationColorGenerator()
         self.generator = generate_uniform_random_numbers
         self.name_generator_map = {
             'uniform': generate_uniform_random_numbers,
-            'hue': generate_hue_random_number
+            'hue': generate_hue_random_number,
+            'darkness': self.darkness_generator.generate_darkness_color,
+            'saturation': self.saturation_generator.generate_saturation_color
         }
 
     def generate_file(self, img_task: Image) -> list:
@@ -49,6 +74,6 @@ class ColorMatcherGenerator:
 if __name__ == "__main__":
     img = Image.new(mode="RGB", size=(2480, 3580), color=(255, 255, 255))
     cmg = ColorMatcherGenerator()
-    cmg.use_certain_number_generator('hue')
+    cmg.use_certain_number_generator('saturation')
     cmg.generate_file(img)
     img.show()
