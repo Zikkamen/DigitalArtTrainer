@@ -1,5 +1,5 @@
 from PIL import Image
-from Trainers.LineArt import StraightLineGenerator
+from Trainers.LineArt.StraightLines import StraightLineGenerator
 from Trainers.LineArt.RandomCurvedLines import RandomCurvedLinesGenerator
 
 
@@ -12,6 +12,8 @@ def main() -> None:
 
     rclg = RandomCurvedLinesGenerator()
     rclg.draw_random_curved_lines(img, img)
+
+    img.show()
 
 
     #img_answer = Image.open("task.gif")

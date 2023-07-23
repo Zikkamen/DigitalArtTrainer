@@ -14,6 +14,6 @@ class StraightLineGenerator:
         random_lines = RandomLines()
         random_lines.draw_random_lines(img_task, img_task_view, img_answer)
 
-        img_task.save("task.gif")
-        img_task_view.save("task_view.gif")
-        img_answer.save("answer.gif")
+        img_task.save("Images/task.gif")
+        img_task_view.save("Images/task_view.gif")
+        img_answer.save("Images/answer.gif")

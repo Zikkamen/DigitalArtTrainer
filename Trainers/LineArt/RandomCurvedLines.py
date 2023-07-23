@@ -5,28 +5,38 @@ from PIL import Image
 import numpy as np
 
 
+def generate_vector_and_normal(pos1: np.array, pos2: np.array):
+    vec = pos2 - pos1
+
+    return vec, np.array([-vec[1], vec[0]])
+
+
+def generate_random_pos() -> np.array:
+    return np.array([random.randint(0, 2480), random.randint(0, 3580)])
+
+
+def generate_two_random_pos() -> tuple:
+    return generate_random_pos(), generate_random_pos()
+
+
+def generate_two_positions(pos: np.array, vec: np.array, norm: np.array) -> tuple:
+    height = random.random()
+    alpha = random.random() / 2
+
+    return pos + alpha * vec + height * norm, pos + (1-alpha) * vec - height * norm
+
+
 class RandomCurvedLinesGenerator:
     def __int__(self) -> None:
         pass
 
     def draw_random_curved_lines(self, img_task: Image, img_answer: Image) -> None:
-
-        for i in range(10):
+        for i in range(15):
             draw = aggdraw.Draw(img_task)
 
-            pos_start = np.array([random.randint(0, 2480), random.randint(0, 3580)])
-            pos_end = np.array([random.randint(0, 2480), random.randint(0, 3580)])
-
-            vec_1 = pos_end - pos_start
-            norm_1 = np.array([-vec_1[1], vec_1[0]])
-
-            alpha = random.random() / 2
-            alpha_inv = 1 - alpha
-
-            height = random.random()
-
-            p1 = pos_start + alpha * vec_1 + height * norm_1
-            p2 = pos_start + alpha_inv * vec_1 - height * norm_1
+            pos_start, pos_end = generate_two_random_pos()
+            vec_1, norm_1 = generate_vector_and_normal(pos_start, pos_end)
+            p1, p2 = generate_two_positions(pos_start, vec_1, norm_1)
 
             color = np.random.randint(60, 255, size=3)
 
