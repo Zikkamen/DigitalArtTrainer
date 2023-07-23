@@ -7,7 +7,7 @@ class BlenderApi:
         self.file_directory = os.path.dirname(__file__)
         self.blender_files_output_directory = os.path.join(self.file_directory, "BlenderOutputFiles")
         self.blender_template_files_directory = os.path.join(self.file_directory, "BlenderTemplates")
-        self.python_file_queue_directory = os.path.join(self.file_directory, "PythonFileQueue")
+        self.python_file_queue_directory = os.path.join(self.file_directory, "BlenderPythonScripts")
         self.output_blender_file_path = os.path.join(self.blender_files_output_directory, "temp.blend")
 
     def new_temp_file(self) -> None:

@@ -1,0 +1,11 @@
+bm = bmesh.new()
+bmesh.ops.create_cube(bm, size=%size)
+
+mesh = bpy.data.meshes.new('Basic_Cube')
+bm.to_mesh(mesh)
+mesh.update()
+bm.free()
+
+basic_cube = bpy.data.objects.new("Basic_Cube", mesh)
+basic_cube.location = (%x_pos, %y_pos, %z_pos)
+bpy.context.collection.objects.link(basic_cube)
