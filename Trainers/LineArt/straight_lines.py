@@ -1,5 +1,5 @@
 from PIL import Image
-from Trainers.LineArt.RandomLines import RandomLines
+from Trainers.LineArt.random_lines import RandomLines
 
 
 class StraightLineGenerator:

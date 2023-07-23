@@ -1,6 +1,6 @@
 from PIL import Image
-from Trainers.LineArt.StraightLines import StraightLineGenerator
-from Trainers.LineArt.RandomCurvedLines import RandomCurvedLinesGenerator
+from Trainers.LineArt.straight_lines import StraightLineGenerator
+from Trainers.LineArt.random_curved_lines import RandomCurvedLinesGenerator
 
 
 def main() -> None:
