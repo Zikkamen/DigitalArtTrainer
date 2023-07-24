@@ -3,21 +3,18 @@ import os
 
 
 class BlenderApi:
-    def __init__(self) -> None:
+    def __init__(self, output_file_name: str = "temp") -> None:
         self.file_directory = os.path.dirname(__file__)
         self.blender_files_output_directory = os.path.join(self.file_directory, "BlenderOutputFiles")
         self.blender_template_files_directory = os.path.join(self.file_directory, "BlenderTemplates")
         self.python_file_queue_directory = os.path.join(self.file_directory, "BlenderPythonScripts")
-        self.output_blender_file_path = os.path.join(self.blender_files_output_directory, "temp.blend")
+        self.output_blender_file_path = os.path.join(self.blender_files_output_directory, f"{output_file_name}.blend")
 
-    def new_temp_file(self) -> None:
+    def new_temp_file(self, template_name: str = "cube_on_plane") -> None:
         shutil.copy(
-            os.path.join(self.blender_template_files_directory, "cube_on_plane.blend"),
+            os.path.join(self.blender_template_files_directory, f"{template_name}.blend"),
             self.output_blender_file_path
         )
-
-    def set_file_name(self, file_name: str) -> None:
-        self.output_blender_file_path = os.path.join(self.blender_files_output_directory, f"{file_name}.blend")
 
     def delete_temp_file(self) -> None:
         if not os.path.exists(self.output_blender_file_path):
@@ -36,4 +33,4 @@ class BlenderApi:
 if __name__ == "__main__":
     blender_api = BlenderApi()
     blender_api.new_temp_file()
-    blender_api.run_blender_command()
+    blender_api.run_blender_command("temp")

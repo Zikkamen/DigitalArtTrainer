@@ -1,0 +1,6 @@
+light_data = bpy.data.lights.new(name="New Light", type='POINT')
+light_data.energy = %energy
+
+light_object = bpy.data.objects.new(name="New Light", object_data=light_data)
+bpy.context.collection.objects.link(light_object)
+light_object.location = (%x_pos, %y_pos, %z_pos)

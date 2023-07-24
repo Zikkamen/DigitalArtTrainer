@@ -1,0 +1,10 @@
+cam_rotation = (%x_rot, %y_rot, %z_rot)
+cam_position = (%x_pos, %y_pos, %z_pos)
+
+bpy.ops.object.camera_add()
+cam = bpy.data.objects['Camera']
+cam.rotation_mode = 'XYZ'
+
+scene.camera = cam
+
+setupCamera(scene, cam_position, cam_rotation)
