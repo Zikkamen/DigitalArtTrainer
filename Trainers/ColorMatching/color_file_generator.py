@@ -53,6 +53,16 @@ class SaturationColorGenerator:
 
         return self.hue + np.int32(self.diff * alpha + 0.5)
 
+    def generate_saturation_and_darken_color(self) -> np.array:
+        alpha = random.random()
+        beta = random.random()
+
+        if self.first:
+            self.first = False
+            return self.hue
+
+        return np.int32((self.hue + np.int32(self.diff * alpha + 0.5)) * beta)
+
     def set_first_datapoint(self, status: bool):
         self.first = status
 
@@ -66,7 +76,8 @@ class ColorMatcherGenerator:
             'uniform': generate_uniform_random_numbers,
             'hue': generate_hue_random_number,
             'darkness': self.darkness_generator.generate_darkness_color,
-            'saturation': self.saturation_generator.generate_saturation_color
+            'saturation': self.saturation_generator.generate_saturation_color,
+            'sat_dark': self.saturation_generator.generate_saturation_and_darken_color
         }
 
     def generate_file(self, img_task: Image) -> list:
@@ -75,11 +86,13 @@ class ColorMatcherGenerator:
 
         answer_placement = 210
         square_width = 200
+        buffer_y = 100
+        buffer_x = 35
 
         self.setup_generators()
 
-        for i in np.arange(100, 3580-100, 400):
-            for j in np.arange(35, 2480-100, 500):
+        for i in np.arange(buffer_y, 3580 - buffer_y, 400):
+            for j in np.arange(buffer_x, 2480 - buffer_x, 500):
                 color = self.generator()
 
                 draw_task.rectangle((j, i, j+square_width, i+square_width), tuple(color), (0, 0, 0), 5)
@@ -106,6 +119,6 @@ class ColorMatcherGenerator:
 if __name__ == "__main__":
     img = Image.new(mode="RGB", size=(2480, 3580), color=(255, 255, 255))
     cmg = ColorMatcherGenerator()
-    cmg.use_certain_number_generator('hue')
+    cmg.use_certain_number_generator('sat_dark')
     cmg.generate_file(img)
     img.show()
