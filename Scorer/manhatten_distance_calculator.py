@@ -4,58 +4,47 @@ import matplotlib.pyplot as plt
 
 class ManhattanDistanceCalculator:
     def __init__(self) -> None:
-        pass
+        self.np_answer_md = None
+        self.np_answer_matrix = None
+        self.np_answer_sum_colors_bitmap = None
 
-    def score_black_white(self, img_submission : Image, img_answer : Image) -> float:
+    def iterate_through_matrix_x(self, start: int, end: int, step: int, matrix_shape: tuple) -> None:
+        for i in range(matrix_shape[1]):
+            lowest_num = np.inf
+
+            for j in range(start, end, step):
+                if self.np_answer_sum_colors_bitmap[j,i]:
+                    lowest_num = 0
+
+                self.np_answer_md[j, i] = min(self.np_answer_md[j, i], lowest_num)
+                lowest_num += 1
+
+    def iterate_through_matrix_y(self, start: int, end: int, step: int, matrix_shape: tuple) -> None:
+        for j in range(matrix_shape[0]):
+            lowest_num = np.inf
+
+            for i in range(start, end, step):
+                lowest_num = min(lowest_num, self.np_answer_md[j, i])
+                self.np_answer_md[j, i] = min(self.np_answer_md[j, i], lowest_num)
+                lowest_num += 1
+
+    def score_black_white(self, img_submission: Image, img_answer : Image) -> float:
         np_submission = np.array(img_submission)
-        np_answer = np.array(img_answer)
-
-        print(np_answer.shape)
+        self.np_answer_matrix = np.array(img_answer)
 
         np_answer_sum_colors = np.sum(img_answer, axis=2)
-        np_answer_sum_colors_bitmap = np_answer_sum_colors < 750
+        self.np_answer_sum_colors_bitmap = np_answer_sum_colors < 750
 
-        np_answer_shape = np_answer_sum_colors_bitmap.shape
-        np_answer_md = np.full(np_answer_shape, np.inf)
+        np_answer_shape = self.np_answer_sum_colors_bitmap.shape
+        self.np_answer_md = np.full(np_answer_shape, np.inf)
 
-        for i in range(np_answer_shape[1]):
-            lowest_num = np.inf
+        self.iterate_through_matrix_x(0, np_answer_shape[0], 1, np_answer_shape)
+        self.iterate_through_matrix_x(np_answer_shape[0] - 1, -1, -1, np_answer_shape)
+        self.iterate_through_matrix_y(0, np_answer_shape[1], 1, np_answer_shape)
+        self.iterate_through_matrix_y(np_answer_shape[1] - 1, -1, -1, np_answer_shape)
 
-            for j in range(np_answer_shape[0]):
-                if np_answer_sum_colors_bitmap[j,i]:
-                    lowest_num = 0
-
-                np_answer_md[j,i] = min(np_answer_md[j,i], lowest_num)
-                lowest_num += 1
-
-        for i in range(np_answer_shape[1]):
-            lowest_num = np.inf
-
-            for j in range(np_answer_shape[0] - 1, -1, -1):
-                if np_answer_sum_colors_bitmap[j,i]:
-                    lowest_num = 0
-
-                np_answer_md[j,i] = min(np_answer_md[j,i], lowest_num)
-                lowest_num += 1
-
-        for j in range(np_answer_shape[0]):
-            lowest_num = np.inf
-
-            for i in range(np_answer_shape[1]):
-                lowest_num = min(lowest_num, np_answer_md[j, i])
-                np_answer_md[j,i] = min(np_answer_md[j,i], lowest_num)
-                lowest_num += 1
-
-        for j in range(np_answer_shape[0]):
-            lowest_num = np.inf
-
-            for i in range(np_answer_shape[1] - 1, -1, -1):
-                lowest_num = min(lowest_num, np_answer_md[j,i])
-                np_answer_md[j,i] = min(np_answer_md[j,i], lowest_num)
-                lowest_num += 1
-
-        print(np_answer_md)
+        print(self.np_answer_md)
         img_answer.show()
 
-        plt.imshow(np_answer_md, cmap='hot', interpolation='nearest')
+        plt.imshow(self.np_answer_md, cmap='hot', interpolation='nearest')
         plt.show()

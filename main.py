@@ -1,4 +1,6 @@
 from PIL import Image
+
+from Scorer.manhatten_distance_calculator import ManhattanDistanceCalculator
 from Trainers.LineArt.straight_lines import StraightLineGenerator
 from Trainers.LineArt.random_curved_lines import RandomCurvedLinesGenerator
 
@@ -16,13 +18,12 @@ def main() -> None:
     img.show()
 
 
-    #img_answer = Image.open("task.gif")
-    #rgb_img_answer = img_answer.convert('RGB')
-    #md_scorer = ManhattanDistanceCalculator()
-    #md_scorer.score_black_white(img, rgb_img_answer)
+    img_answer = Image.open("Images/task.gif")
+    rgb_img_answer = img_answer.convert('RGB')
+    md_scorer = ManhattanDistanceCalculator()
+    md_scorer.score_black_white(img, rgb_img_answer)
 
-    #img.show()
-
+    img.show()
 
 
 if __name__ == "__main__":
