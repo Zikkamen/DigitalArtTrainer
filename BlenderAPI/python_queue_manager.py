@@ -70,5 +70,5 @@ if __name__ == "__main__":
     python_queue_manager.create_temp_pythonfile()
     python_queue_manager.add_cube((1, 2, 3), 4)
     python_queue_manager.add_point_light((4, 1, 6), 1000)
-    python_queue_manager.add_camera((0, 0, 10), (0, 0, 0))
+    python_queue_manager.add_camera((0, 0, 10), (0, 90, 90))
     python_queue_manager.save_file()

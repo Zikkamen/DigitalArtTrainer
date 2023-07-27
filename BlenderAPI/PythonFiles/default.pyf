@@ -2,16 +2,17 @@ import bpy
 import bmesh
 import math
 
-def setupCamera(scene: bpy.data.scenes, cam_position: tuple, cam_rotation: tuple):
+def rotate_object(object: bpy.data, rotation: tuple):
     pi = math.pi
 
-    scene.camera.rotation_euler[0] = cam_rotation[0] * (pi / 180.0)
-    scene.camera.rotation_euler[1] = cam_rotation[1] * (pi / 180.0)
-    scene.camera.rotation_euler[2] = cam_rotation[2] * (pi / 180.0)
+    object.rotation_euler[0] = rotation[0] * (pi / 180.0)
+    object.rotation_euler[1] = rotation[1] * (pi / 180.0)
+    object.rotation_euler[2] = rotation[2] * (pi / 180.0)
 
-    scene.camera.location.x = cam_position[0]
-    scene.camera.location.y = cam_position[1]
-    scene.camera.location.z = cam_position[2]
+def move_object(object: bpy.data, position: tuple):
+    object.location.x = position[0]
+    object.location.y = position[1]
+    object.location.z = position[2]
 
 scene = bpy.data.scenes["Scene"]
 view_layer = bpy.context.view_layer
