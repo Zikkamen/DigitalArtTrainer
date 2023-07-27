@@ -10,7 +10,7 @@ app.mount("/static", StaticFiles(directory="Webinterface/static"), name="static"
 
 
 @app.get("/", response_class=HTMLResponse)
-async  def read_root(request: Request):
+async def read_root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
