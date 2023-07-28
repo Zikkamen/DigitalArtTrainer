@@ -7,5 +7,7 @@ mesh.update()
 bm.free()
 
 basic_cube = bpy.data.objects.new("Basic_Cube", mesh)
-basic_cube.location = (%x_pos, %y_pos, %z_pos)
+
+move_object(basic_cube, (%x_pos, %y_pos, %z_pos))
+rotate_object(basic_cube, (%x_rot, %y_rot, %z_rot))
 bpy.context.collection.objects.link(basic_cube)

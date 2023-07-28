@@ -22,15 +22,12 @@ class BlenderApi:
 
         os.remove(self.output_blender_file_path)
 
-    def run_blender_command(self, instruction: str) -> None:
-        temp_python_file_path = os.path.join(self.python_file_queue_directory, f"{instruction}.py")
-
-        command = f'blender {self.output_blender_file_path} -b -P {temp_python_file_path}'
-
+    def run_blender_command(self, file_path: str) -> None:
+        command = f'blender {self.output_blender_file_path} -b -P {file_path}'
         os.system(command)
 
 
 if __name__ == "__main__":
     blender_api = BlenderApi()
     blender_api.new_temp_file()
-    blender_api.run_blender_command("temp")
+    blender_api.run_blender_command(os.path.join(blender_api.python_file_queue_directory, "temp.py"))
