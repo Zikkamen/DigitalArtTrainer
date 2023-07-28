@@ -86,8 +86,11 @@ class ColorMatcherGenerator:
 
         answer_placement = 210
         square_width = 200
-        buffer_y = 100
+        buffer_y = 130
         buffer_x = 35
+
+        font = ImageFont.truetype("arial.ttf", 75)
+        counter = 0
 
         self.setup_generators()
 
@@ -99,12 +102,12 @@ class ColorMatcherGenerator:
                 draw_task.rectangle((j + answer_placement, i, j + square_width + answer_placement, i + square_width),
                                     (255, 255, 255), (0, 0, 0), 5)
 
+                counter += 1
+                draw_task.text((j, i-80), f"#{counter}", (50, 50, 50), font)
                 answer_dots.append(ColourDataPoint(
                     position=(j + answer_placement + square_width // 2, i + square_width // 2),
                     color=color
                 ))
-
-        print(answer_dots)
 
         return answer_dots
 
