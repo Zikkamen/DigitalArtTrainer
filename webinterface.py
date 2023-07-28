@@ -17,3 +17,8 @@ async def read_root(request: Request):
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: Union[str, None] = None):
     return {"item_id": item_id, "q": q}
+
+
+@app.get("/exercises", response_class=HTMLResponse)
+async def read_exercises(request: Request):
+    return templates.TemplateResponse("exercises_view.html", {"request": request})

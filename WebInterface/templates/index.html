@@ -6,56 +6,148 @@
 	============================================= -->
 	<div id="wrapper" class="clearfix">
 		{% include 'html_fragments/header.html' %}
-		{% include 'html_fragments/url_path.html' %}
 
-		{% for i in range(0,5) -%}
+		<section id="slider" class="slider-element slider-parallax min-vh-60 min-vh-md-100 dark include-header" style="background: url(images/landing/static.jpg) center center no-repeat; background-size: cover">
+			<div class="slider-inner">
+
+				<div class="vertical-middle slider-element-fade">
+					<div class="container-fluid py-5">
+						<div class="heading-block text-center border-bottom-0">
+							<h1>Starter's Guide to create Landing Pages</h1>
+							<span>Building a Landing Page was never so Easy &amp; Interactive</span>
+						</div>
+
+						<div class="text-center">
+							<a href="#" class="button button-3d button-teal button-xlarge mb-0"><i class="icon-star3"></i>Start your FREE Trial</a> - OR - <a href="#" data-scrollto="#section-pricing" class="button button-3d button-red button-xlarge mb-0"><i class="icon-user2"></i>Sign Up for a Subscription</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+		<!-- Content
+		============================================= -->
 		<section id="content">
 			<div class="content-wrap">
 				<div class="container clearfix">
-					<!-- Portfolio Items
-					============================================= -->
-					<div id="portfolio" class="portfolio row grid-container gutter-20 gutter-sm-50" data-layout="fitRows">
-
-						<!-- Portfolio Item: Start -->
-						<article class="portfolio-item col-12 pf-media pf-icons">
-							<!-- Grid Inner: Start -->
-							<div class="grid-inner row g-0">
-								<!-- Image: Start -->
-								<div class="col-lg-8">
-									<div class="portfolio-image">
-										<div class="grid-inner">
-											<a href="portfolio-single.html">
-												<img src="images/portfolio/1/1.jpg" alt="Open Imagination">
-											</a>
-											<!-- Overlay: Start -->
-											<div class="bg-overlay">
-												<div class="bg-overlay-content dark" data-hover-animate="fadeIn">
-													<a href="images/portfolio/full/1.jpg" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-lightbox="image" title="Image"><i class="icon-line-plus"></i></a>
-													<a href="portfolio-single.html" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350"><i class="icon-line-ellipsis"></i></a>
-												</div>
-												<div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
-											</div>
-											<!-- Overlay: End -->
-										</div>
-									</div>
+					<div id="section-features" class="heading-block text-center page-section">
+						<h2>Features Overview</h2>
+						<span>Some of the Features that are gonna blow your mind off</span>
+					</div>
+					<div class="row justify-content-center col-mb-50 mb-0">
+						<div class="col-md-6 col-lg-4">
+							<div class="feature-box fbox-plain">
+								<div class="fbox-icon" data-animate="bounceIn">
+									<a href="#"><img src="images/icons/features/responsive.png" alt="Responsive Layout"></a>
 								</div>
-								<!-- Image: End -->
-								<!-- Decription: Start -->
-								<div class="portfolio-desc col-lg-4 p-4 px-lg-5">
-									<h3><a href="portfolio-single.html">Open Imagination</a></h3>
-									<p class="mt-3 d-none d-sm-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, quaerat beatae nulla debitis vitae temporibus enim sed. Optio, reprehenderit, ex.</p>
-									<a href="portfolio-single.html" class="btn btn-secondary d-none d-sm-inline-block"><i class="icon-line-arrow-right"></i><span class="visually-hidden">Details</span></a>
+								<div class="fbox-content">
+									<h3>Responsive Layout</h3>
+									<p>Powerful Layout with Responsive functionality that can be adapted to any screen size. Resize browser to view.</p>
 								</div>
-								<!-- Description: End -->
 							</div>
-							<!-- Grid Inner: End -->
-						</article>
-						<!-- Portfolio Item: End -->
-					</div><!-- #portfolio end -->
+						</div>
+
+						<div class="col-md-6 col-lg-4">
+							<div class="feature-box fbox-plain">
+								<div class="fbox-icon" data-animate="bounceIn" data-delay="200">
+									<a href="#"><img src="images/icons/features/retina.png" alt="Retina Graphics"></a>
+								</div>
+								<div class="fbox-content">
+									<h3>Retina Graphics</h3>
+									<p>Looks beautiful &amp; ultra-sharp on Retina Screen Displays. Retina Icons, Fonts &amp; all others graphics are optimized.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6 col-lg-4">
+							<div class="feature-box fbox-plain">
+								<div class="fbox-icon" data-animate="bounceIn" data-delay="400">
+									<a href="#"><img src="images/icons/features/performance.png" alt="Powerful Performance"></a>
+								</div>
+								<div class="fbox-content">
+									<h3>Powerful Performance</h3>
+									<p>Canvas includes tons of optimized code that are completely customizable and deliver unmatched fast performance.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6 col-lg-4">
+							<div class="feature-box fbox-plain">
+								<div class="fbox-icon" data-animate="bounceIn" data-delay="600">
+									<a href="#"><img src="images/icons/features/flag.png" alt="Responsive Layout"></a>
+								</div>
+								<div class="fbox-content">
+									<h3>Endless Possibilities</h3>
+									<p>You have complete easy control on each &amp; every element that provides endless customization possibilities.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6 col-lg-4">
+							<div class="feature-box fbox-plain">
+								<div class="fbox-icon" data-animate="bounceIn" data-delay="800">
+									<a href="#"><img src="images/icons/features/tick.png" alt="Retina Graphics"></a>
+								</div>
+								<div class="fbox-content">
+									<h3>Light &amp; Dark Scheme</h3>
+									<p>Change your Website's Primary Scheme instantly by simply adding the dark class to the body.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6 col-lg-4">
+							<div class="feature-box fbox-plain">
+								<div class="fbox-icon" data-animate="bounceIn" data-delay="1000">
+									<a href="#"><img src="images/icons/features/tools.png" alt="Powerful Performance"></a>
+								</div>
+								<div class="fbox-content">
+									<h3>Customizable Fonts</h3>
+									<p>Use any Font you like from Google Web Fonts, Typekit or other Web Fonts. They will blend in perfectly.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6 col-lg-4">
+							<div class="feature-box fbox-plain">
+								<div class="fbox-icon" data-animate="bounceIn" data-delay="1200">
+									<a href="#"><img src="images/icons/features/map.png" alt="Responsive Layout"></a>
+								</div>
+								<div class="fbox-content">
+									<h3>Responsive Layout</h3>
+									<p>Powerful Layout with Responsive functionality that can be adapted to any screen size. Resize browser to view.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6 col-lg-4">
+							<div class="feature-box fbox-plain">
+								<div class="fbox-icon" data-animate="bounceIn" data-delay="1400">
+									<a href="#"><img src="images/icons/features/seo.png" alt="Retina Graphics"></a>
+								</div>
+								<div class="fbox-content">
+									<h3>Retina Graphics</h3>
+									<p>Looks beautiful &amp; ultra-sharp on Retina Screen Displays. Retina Icons, Fonts &amp; all others graphics are optimized.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6 col-lg-4">
+							<div class="feature-box fbox-plain">
+								<div class="fbox-icon" data-animate="bounceIn" data-delay="1600">
+									<a href="#"><img src="images/icons/features/support.png" alt="Powerful Performance"></a>
+								</div>
+								<div class="fbox-content">
+									<h3>Powerful Performance</h3>
+									<p>Canvas includes tons of optimized code that are completely customizable and deliver unmatched fast performance.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="divider divider-sm divider-center"><i class="icon-circle"></i></div>
 				</div>
 			</div>
 		</section><!-- #content end -->
-		{% endfor -%}
 	</div>
 	{% include 'html_fragments/footer.html' %}
 	{% include 'html_fragments/scripts.html' %}
