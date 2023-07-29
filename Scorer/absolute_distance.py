@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class BitMaskCalculator:
     def __init__(self, penalty: float = 10, reward: float = 100) -> None:
         self.penalty = penalty
@@ -12,4 +13,4 @@ class BitMaskCalculator:
         np_diff = np.abs(np_submission - np_answer)
         np_score = (np_diff == 0) * self.reward - (np_diff > 0) * self.penalty
 
-        return np.sum(np_score)
+        return float(np.sum(np_score))

@@ -2,6 +2,7 @@ from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 class ManhattanDistanceCalculator:
     def __init__(self) -> None:
         self.np_answer_md = None
