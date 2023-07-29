@@ -21,7 +21,7 @@ def set_rotation(original_str: str, rotation: tuple) -> str:
 
 
 def set_feature(original_str: str, feature_name: str, value: float) -> str:
-    original_str = re.sub(f"%{feature_name}", str(value), original_str)
+    original_str = re.sub(f"%{feature_name}", r'' + str(value), original_str)
 
     return original_str
 
@@ -31,6 +31,7 @@ class PythonQueueManager:
         self.file_directory = os.path.dirname(__file__)
         self.python_file_queue_directory = os.path.join(self.file_directory, "BlenderPythonScripts")
         self.python_files_directory = os.path.join(self.file_directory, "PythonFiles")
+        self.image_files_directory = os.path.join(self.file_directory, "Images")
         self.python_file_path = None
         self.python_file_counter = 0
         self.blender_api = BlenderApi("temp")
@@ -75,6 +76,14 @@ class PythonQueueManager:
 
         self.write_to_python_file(camera_python_string)
 
+    def render_blender_image(self, filename: str = "temp.png") -> None:
+        with open(os.path.join(self.python_files_directory, "render_image.pyf")) as fs:
+            render_python_string = fs.read()
+
+        render_python_string = render_python_string.replace("%file_path", rf'r"{os.path.join(self.image_files_directory, filename)}"')
+
+        self.write_to_python_file(render_python_string)
+
     def save_file(self) -> None:
         self.write_to_python_file("bpy.ops.wm.save_mainfile()")
 
@@ -92,9 +101,10 @@ class PythonQueueManager:
 if __name__ == "__main__":
     python_queue_manager = PythonQueueManager()
     python_queue_manager.create_temp_pythonfile()
-    python_queue_manager.add_cube((0, 0, 0), (0, 0, 45), 1)
-    python_queue_manager.add_point_light((4, 1, 6), 1000)
-    python_queue_manager.add_camera((0, 0, 10), (0, 90, 90))
+    python_queue_manager.add_cube((0, 0, 0), (0, 45, 45), 1)
+    # python_queue_manager.add_point_light((4, 1, 6), 1000)
+    python_queue_manager.add_camera((0, 0, 5), (0, 0, 0))
+    python_queue_manager.render_blender_image()
     python_queue_manager.save_file()
 
     python_queue_manager.create_new_blender_file_and_execute("empty")

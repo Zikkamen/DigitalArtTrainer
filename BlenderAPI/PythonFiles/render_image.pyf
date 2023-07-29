@@ -1,0 +1,2 @@
+bpy.context.scene.render.filepath = %file_path
+bpy.ops.render.render(write_still = True)
