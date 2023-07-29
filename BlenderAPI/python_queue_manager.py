@@ -101,7 +101,7 @@ class PythonQueueManager:
 if __name__ == "__main__":
     python_queue_manager = PythonQueueManager()
     python_queue_manager.create_temp_pythonfile()
-    python_queue_manager.add_cube((0, 0, 0), (0, 45, 45), 1)
+    python_queue_manager.add_cube((0, 0, 0), (0, 45, 0), 1)
     # python_queue_manager.add_point_light((4, 1, 6), 1000)
     python_queue_manager.add_camera((0, 0, 5), (0, 0, 0))
     python_queue_manager.render_blender_image()
