@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+{% include 'html_fragments/head.html' %}
+<body class="stretched">
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper" class="clearfix">
+		{% include 'html_fragments/header.html' %}
+		{% include 'html_fragments/url_path.html' %}
+
+		{% for exercise in exercise_list -%}
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container clearfix">
+					<!-- Portfolio Items
+					============================================= -->
+					<div id="portfolio" class="portfolio row grid-container gutter-20 gutter-sm-50" data-layout="fitRows">
+
+						<!-- Portfolio Item: Start -->
+						<article class="portfolio-item col-12 pf-media pf-icons">
+							<!-- Grid Inner: Start -->
+							<div class="grid-inner row g-0">
+								<!-- Image: Start -->
+								<div class="col-lg-8">
+									<div class="portfolio-image">
+										<div class="grid-inner">
+											<a href="portfolio-single.html">
+												<img src="images/portfolio/1/1.jpg" alt="Open Imagination">
+											</a>
+											<!-- Overlay: Start -->
+											<div class="bg-overlay">
+												<div class="bg-overlay-content dark" data-hover-animate="fadeIn">
+													<a href="images/portfolio/full/1.jpg" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-lightbox="image" title="Image"><i class="icon-line-plus"></i></a>
+													<a href="portfolio-single.html" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350"><i class="icon-line-ellipsis"></i></a>
+												</div>
+												<div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
+											</div>
+											<!-- Overlay: End -->
+										</div>
+									</div>
+								</div>
+								<!-- Image: End -->
+								<!-- Decription: Start -->
+								<div class="portfolio-desc col-lg-4 p-4 px-lg-5">
+									<h3><a href="portfolio-single.html">{{ exercise.exercise_name }}</a></h3>
+									<p class="mt-3 d-none d-sm-block">{{ exercise.description }}</p>
+									<a href="portfolio-single.html" class="btn btn-secondary d-none d-sm-inline-block"><i class="icon-line-arrow-right"></i><span class="visually-hidden">Details</span></a>
+								</div>
+								<!-- Description: End -->
+							</div>
+							<!-- Grid Inner: End -->
+						</article>
+						<!-- Portfolio Item: End -->
+					</div><!-- #portfolio end -->
+				</div>
+			</div>
+		</section><!-- #content end -->
+		{% endfor -%}
+	</div>
+	{% include 'html_fragments/footer.html' %}
+	{% include 'html_fragments/scripts.html' %}
+</body>
+</html>

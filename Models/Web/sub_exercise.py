@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 
 @dataclass
-class Exercise:
+class SubExercise:
     exercise_name: str
     exercise_url: str
     picture_url: str

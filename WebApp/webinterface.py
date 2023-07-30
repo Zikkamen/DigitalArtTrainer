@@ -7,6 +7,7 @@ from fastapi.templating import Jinja2Templates
 from typing import Union
 
 from WebApp.ArtEvaluatorService import ArtEvaluatorService
+from WebApp.persistence.data_service import DataService
 
 app = FastAPI()
 
@@ -15,6 +16,7 @@ templates = Jinja2Templates(directory=os.path.join(file_directory, "resources/te
 app.mount("/static", StaticFiles(directory=os.path.join(file_directory, "resources/static")), name="static")
 
 art_evaluator_service = ArtEvaluatorService()
+data_service = DataService()
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -22,15 +24,19 @@ async def read_root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
-
-
 @app.get("/exercises", response_class=HTMLResponse)
 async def read_exercises(request: Request):
     return templates.TemplateResponse("exercises_view.html",
                                       {
                                           "request": request,
-                                          "exercise_list": art_evaluator_service.get_list_of_exercises()
+                                          "exercise_list": data_service.get_list_of_exercises()
+                                      })
+
+
+@app.get("/exercises/{exercise_name}", response_class=HTMLResponse)
+async def read_sub_exercises(request: Request, exercise_name: str):
+    return templates.TemplateResponse("sub_exercises_view.html",
+                                      {
+                                          "request": request,
+                                          "exercise_list": data_service.get_list_of_subexercises(exercise_name)
                                       })
