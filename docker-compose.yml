@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  fastapi:
+    build: .
+    ports:
+      - "8000:8000"
+    restart: always
+    depends_on:
+      - db
+    volumes:
+      - ./:/var/www/fastapi
+
+  db:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+
+volumes:
+  db:
+    driver: local

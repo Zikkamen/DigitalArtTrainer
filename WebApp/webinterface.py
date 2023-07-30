@@ -1,14 +1,18 @@
+import os
+
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from typing import Union
 
-from WebInterface.ArtEvaluatorService import ArtEvaluatorService
+from WebApp.ArtEvaluatorService import ArtEvaluatorService
 
 app = FastAPI()
-templates = Jinja2Templates(directory="Webinterface/resources/templates")
-app.mount("/static", StaticFiles(directory="Webinterface/resources/static"), name="static")
+
+file_directory = os.path.dirname(__file__)
+templates = Jinja2Templates(directory=os.path.join(file_directory, "resources/templates"))
+app.mount("/static", StaticFiles(directory=os.path.join(file_directory, "resources/static")), name="static")
 
 art_evaluator_service = ArtEvaluatorService()
 

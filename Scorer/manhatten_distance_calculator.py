@@ -1,7 +1,7 @@
 import numpy as np
-import matplotlib.pyplot as plt
 
 from PIL import Image
+
 
 class ManhattanDistanceCalculator:
     def __init__(self) -> None:
@@ -46,6 +46,3 @@ class ManhattanDistanceCalculator:
 
         print(self.np_answer_md)
         img_answer.show()
-
-        plt.imshow(self.np_answer_md, cmap='hot', interpolation='nearest')
-        plt.show()

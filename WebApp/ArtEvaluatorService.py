@@ -1,4 +1,4 @@
-from WebInterface.persistence.data_repository import DataRepository
+from WebApp.persistence.data_repository import DataRepository
 
 
 class ArtEvaluatorService:
