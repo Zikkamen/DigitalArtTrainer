@@ -15,3 +15,11 @@ CREATE TABLE IF NOT EXISTS sub_exercises
     exercise_description VARCHAR(256),
     exercise_type VARCHAR(50)
 );
+CREATE TABLE IF NOT EXISTS exercise_repository
+(
+    id serial PRIMARY KEY,
+    exercise_type VARCHAR(50) NOT NULL UNIQUE,
+    sub_excercise_type VARCHAR(50) NOT NULL,
+    exercise_folder_path VARCHAR(256),
+    exercise_url VARCHAR(50)
+);

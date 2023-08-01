@@ -16,7 +16,6 @@ templates = Jinja2Templates(directory=os.path.join(file_directory, "resources/te
 app.mount("/static", StaticFiles(directory=os.path.join(file_directory, "resources/static")), name="static")
 
 art_evaluator_service = ArtEvaluatorService()
-data_service = DataService()
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -29,7 +28,7 @@ async def read_exercises(request: Request):
     return templates.TemplateResponse("exercises_view.html",
                                       {
                                           "request": request,
-                                          "exercise_list": data_service.get_list_of_exercises()
+                                          "exercise_list": art_evaluator_service.get_list_of_exercises()
                                       })
 
 
@@ -38,5 +37,5 @@ async def read_sub_exercises(request: Request, exercise_name: str):
     return templates.TemplateResponse("sub_exercises_view.html",
                                       {
                                           "request": request,
-                                          "exercise_list": data_service.get_list_of_subexercises(exercise_name)
+                                          "exercise_list": art_evaluator_service.get_list_of_subexercises(exercise_name)
                                       })
