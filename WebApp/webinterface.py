@@ -37,5 +37,5 @@ async def read_sub_exercises(request: Request, exercise_name: str):
     return templates.TemplateResponse("sub_exercises_view.html",
                                       {
                                           "request": request,
-                                          "exercise_list": art_evaluator_service.get_list_of_subexercises(exercise_name)
+                                          "exercise_list": art_evaluator_service.get_list_of_sub_exercises(exercise_name)
                                       })

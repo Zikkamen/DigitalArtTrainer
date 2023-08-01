@@ -69,7 +69,7 @@ class DataService:
 
         return [Exercise(row[1], row[2], row[3], row[4]) for row in rows]
 
-    def get_list_of_subexercises(self, exercise: str) -> list:
+    def get_list_of_sub_exercises(self, exercise: str) -> list:
         rows = get_all_elements_with_condition("sub_exercises", "exercise_type", exercise)
 
         return [Exercise(row[1], row[2], row[3], row[4]) for row in rows]

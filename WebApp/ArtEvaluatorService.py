@@ -8,5 +8,5 @@ class ArtEvaluatorService:
     def get_list_of_exercises(self) -> list:
         return self.data_repo.get_list_of_exercises()
 
-    def get_list_of_subexercises(self, exercise_name: str) -> list:
-        return self.data_repo.get_list_of_subexercises(exercise_name)
+    def get_list_of_sub_exercises(self, exercise_name: str) -> list:
+        return self.data_repo.get_list_of_sub_exercises(exercise_name)
