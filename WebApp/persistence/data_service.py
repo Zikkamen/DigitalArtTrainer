@@ -2,6 +2,7 @@ import psycopg2
 import os
 
 from Models.Web.exercise import Exercise
+from Models.Web.sub_exercise import SubExercise
 from WebApp.persistence.settings import Settings
 
 
@@ -72,4 +73,4 @@ class DataService:
     def get_list_of_sub_exercises(self, exercise: str) -> list:
         rows = get_all_elements_with_condition("sub_exercises", "exercise_type", exercise)
 
-        return [Exercise(row[1], row[2], row[3], row[4]) for row in rows]
+        return [SubExercise(row[1], row[2], row[3], row[4], row[5]) for row in rows]

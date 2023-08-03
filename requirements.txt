@@ -7,6 +7,7 @@ aggdraw~=1.3.16
 fastapi==0.100.1
 uvicorn==0.23.1
 Jinja2==3.1.2
+python-multipart==0.0.6
 
 #Database
 SQLAlchemy==2.0.19

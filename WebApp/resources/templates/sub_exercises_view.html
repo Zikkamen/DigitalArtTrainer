@@ -8,7 +8,7 @@
 		{% include 'html_fragments/header.html' %}
 		{% include 'html_fragments/url_path.html' %}
 
-		{% for exercise in exercise_list -%}
+		{% for sub_exercise in sub_exercise_list -%}
 		<section id="content">
 			<div class="content-wrap">
 				<div class="container clearfix">
@@ -31,7 +31,7 @@
 											<div class="bg-overlay">
 												<div class="bg-overlay-content dark" data-hover-animate="fadeIn">
 													<a href="images/portfolio/full/1.jpg" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-lightbox="image" title="Image"><i class="icon-line-plus"></i></a>
-													<a href="portfolio-single.html" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350"><i class="icon-line-ellipsis"></i></a>
+													<a href={{"portfolio-single.html"}} class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350"><i class="icon-line-ellipsis"></i></a>
 												</div>
 												<div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
 											</div>
@@ -42,9 +42,9 @@
 								<!-- Image: End -->
 								<!-- Decription: Start -->
 								<div class="portfolio-desc col-lg-4 p-4 px-lg-5">
-									<h3><a href="portfolio-single.html">{{ exercise.exercise_name }}</a></h3>
-									<p class="mt-3 d-none d-sm-block">{{ exercise.description }}</p>
-									<a href="portfolio-single.html" class="btn btn-secondary d-none d-sm-inline-block"><i class="icon-line-arrow-right"></i><span class="visually-hidden">Details</span></a>
+									<h3><a href="portfolio-single.html">{{ sub_exercise.exercise_name }}</a></h3>
+									<p class="mt-3 d-none d-sm-block">{{ sub_exercise.description }}</p>
+									<a href={{ url_for('generate_exercise', exercise_name=sub_exercise.exercise_type, sub_exercise_name=sub_exercise.exercise_url) }} class="btn btn-secondary d-none d-sm-inline-block"><i class="icon-line-arrow-right"></i><span class="visually-hidden">Details</span></a>
 								</div>
 								<!-- Description: End -->
 							</div>

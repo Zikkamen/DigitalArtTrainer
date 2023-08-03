@@ -23,3 +23,9 @@ CREATE TABLE IF NOT EXISTS exercise_repository
     exercise_folder_path VARCHAR(256),
     exercise_url VARCHAR(50)
 );
+CREATE TABLE IF NOT EXISTS exercise
+(
+    id BIGINT PRIMARY KEY,
+    owner_id VARCHAR(256) NOT NULL,
+    file_path VARCHAR(256) NOT NULL UNIQUE
+);

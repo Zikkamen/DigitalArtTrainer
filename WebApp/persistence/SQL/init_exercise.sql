@@ -1,7 +1,7 @@
 INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_description, exercise_type) VALUES
 (
     'Hue',
-    'exercises/ColorMatcher/hue',
+    'hue',
     'exercises/ColorMatcher/hue.png',
     'Train your Hue Matching Skills',
     'ColorMatcher'
@@ -9,7 +9,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_description, exercise_type) VALUES
 (
     'Saturation',
-    'exercises/ColorMatcher/saturation',
+    'saturation',
     'exercises/ColorMatcher/saturation.png',
     'Train your Saturation Matching Skills',
     'ColorMatcher'
@@ -17,7 +17,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_description, exercise_type) VALUES
 (
     'Darkness',
-    'exercises/ColorMatcher/darkness',
+    'darkness',
     'exercises/ColorMatcher/darkness.png',
     'Train your Darkness Matching Skills',
     'ColorMatcher'
@@ -25,7 +25,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_description, exercise_type) VALUES
 (
     'Saturation and Darkness',
-    'exercises/ColorMatcher/SatDark',
+    'satdark',
     'exercises/ColorMatcher/SatDark.png',
     'Train your Saturation and Darkness Matching Skills',
     'ColorMatcher'
@@ -33,7 +33,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_description, exercise_type) VALUES
 (
     'Colour',
-    'exercises/ColorMatcher/colour',
+    'colour',
     'exercises/ColorMatcher/colour.png',
     'Train your Colour Matching Skills',
     'ColorMatcher'
@@ -41,7 +41,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_description, exercise_type) VALUES
 (
     'Random Straight Lines (With Overlay)',
-    'exercises/LineArt/RandomStraightLinesWO',
+    'randomstraightlineswo',
     'exercises/ColorMatcher/RandomStraightLinesWO.png',
     'Train your Lineart with tracing the picture',
     'LineArt'
@@ -49,7 +49,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_description, exercise_type) VALUES
 (
     'Random Curved Lines (With Overlay)',
-    'exercises/LineArt/RandomCurvedLinesWO',
+    'randomcurvedlineswO',
     'exercises/ColorMatcher/RandomCurvedLinesWO.png',
     'Train your Lineart with tracing the picture',
     'LineArt'
@@ -57,7 +57,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_description, exercise_type) VALUES
 (
     'Random Straight Lines (Without Overlay)',
-    'exercises/LineArt/RandomStraightLinesWOO',
+    'randomstraightlineswoo',
     'exercises/ColorMatcher/RandomStraightLinesWOO.png',
     'Train your Lineart with seeing the picture',
     'LineArt'
@@ -65,7 +65,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_description, exercise_type) VALUES
 (
     'Random Curved Lines (Without Overlay)',
-    'exercises/LineArt/RandomCurvedLinesWOO',
+    'randomcurvedlineswoo',
     'exercises/ColorMatcher/RandomCurvedLinesWOO.png',
     'Train your Lineart with seeing the picture',
     'LineArt'

@@ -7,3 +7,4 @@ class SubExercise:
     exercise_url: str
     picture_url: str
     description: str
+    exercise_type: str
