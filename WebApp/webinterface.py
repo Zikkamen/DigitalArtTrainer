@@ -1,11 +1,12 @@
 import os
 
 from typing import Annotated
-from fastapi import FastAPI, Request, Form
+
+from PIL import Image
+from fastapi import FastAPI, Request, Form, HTTPException, status, UploadFile, File
 from fastapi.responses import HTMLResponse, RedirectResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-
 from WebApp.art_evaluator_service import ArtEvaluatorService
 
 app = FastAPI()
@@ -42,22 +43,48 @@ async def read_sub_exercises(request: Request, exercise_name: str):
 
 
 @app.get("/exercises/{exercise_name}/{sub_exercise_name}", response_class=RedirectResponse)
-async def generate_exercise(request: Request, exercise_name: str, sub_exercise_name: str):
+async def generate_exercise(exercise_name: str, sub_exercise_name: str):
     print(exercise_name, sub_exercise_name)
 
-    exercise_id = 1
+    exercise_id = art_evaluator_service.generate_exercises(exercise_name, sub_exercise_name)
+
     return f"/exercise/{exercise_id}"
 
 
-@app.get("/exercise/{id}", response_class=HTMLResponse)
-async def show_exercise(request: Request, id: int):
+@app.get("/exercise/{exercise_id}", response_class=HTMLResponse)
+async def show_exercise(request: Request, exercise_id: int):
+    dir_path = art_evaluator_service.get_filepath_of_dir(exercise_id)
+
+    if dir_path is None:
+        raise HTTPException(status_code=404, detail="This Exercise was not found")
+
     return templates.TemplateResponse("exercise.html", {"request": request})
 
 
-@app.post("/exercise/{id}", response_class=FileResponse)
-async def process_exercise_request(id: int, task: Annotated[str, Form()]):
-    print(task)
+@app.post("/exercise/{exercise_id}", response_class=FileResponse)
+async def process_exercise_request(exercise_id: int, file_name: Annotated[str, Form()]):
+    file_path = art_evaluator_service.get_file(exercise_id, file_name)
+    print(file_path)
+
+    if file_path is None:
+        raise HTTPException(status_code=404, detail="Couldn't find file")
+
     return FileResponse(
-        os.path.join(file_directory_persistence, f"{id}/task_1.png"),
-        headers={'Content-Disposition': f'attachment; filename="{id}_task_1.png"'}
+        os.path.join(file_path),
+        headers={'Content-Disposition': f'attachment; filename="{exercise_id}_{file_name}"'}
     )
+
+
+@app.post("/exercise/{exercise_id}/submit", response_class=RedirectResponse)
+async def process_exercise_submission(exercise_id: int, myfile: Annotated[UploadFile, File()]):
+    if myfile.content_type != "image/png":
+        raise HTTPException(400, "Please only upload png files")
+
+    im_submission = Image.open(myfile.file)
+
+    if im_submission.size != (2480, 3580):
+        raise HTTPException(400, "Wrong Image Dimension. It should be (2480, 3580)")
+
+    art_evaluator_service.submit_solution(exercise_id, im_submission)
+
+    return RedirectResponse(f"/exercise/{exercise_id}", status_code=status.HTTP_303_SEE_OTHER)

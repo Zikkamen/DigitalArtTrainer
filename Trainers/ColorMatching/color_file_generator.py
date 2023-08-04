@@ -112,6 +112,9 @@ class ColorMatcherGenerator:
         return answer_dots
 
     def use_certain_number_generator(self, name: str) -> None:
+        if name not in self.name_generator_map:
+            raise IOError
+
         self.generator = self.name_generator_map[name]
 
     def setup_generators(self) -> None:

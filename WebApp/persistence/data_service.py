@@ -60,8 +60,11 @@ class DataService:
         with open(os.path.join(self.sql_directory, "init_exercise_overview.sql")) as fs:
             execute_command_if_table_is_empty("exercises_overview", fs.read())
 
-        with open(os.path.join(self.sql_directory, "init_exercise.sql")) as fs:
+        with open(os.path.join(self.sql_directory, "init_sub_exercise.sql")) as fs:
             execute_command_if_table_is_empty("sub_exercises", fs.read())
+
+        with open(os.path.join(self.sql_directory, "init_exercise_information.sql")) as fs:
+            execute_command_if_table_is_empty("exercise_information", fs.read())
 
         print("Initialized Database")
 

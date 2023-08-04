@@ -27,17 +27,14 @@
 							<div class="border rounded p-4 mb-4 h-shadow all-ts bg-white h-translatey-sm">
 								<div class="row align-items-center col-mb-30">
 									<div class="col-lg-3 col-md-6">
-										<h3 class="mb-0 fw-semibold font-secondary">Personal</h3>
+										<h3 class="mb-0 fw-semibold font-secondary">Task</h3>
 									</div>
 									<div class="col-lg-5 col-md-6">
-										<p class="mb-0 text-larger fw-normal">Full Access, 100 User Accounts, 1 Year License, 23/7 Support</p>
-									</div>
-									<div class="col-lg-2 text-lg-end col-md-6">
-										<h3 class="mb-0 font-secondary">$39.99</h3>
+										<p class="mb-0 text-larger fw-normal">Download the Task File(s)</p>
 									</div>
 									<div class="col-lg-2 text-lg-end col-md-6">
 										<form action="" method="post">
-											<input style="display:none" type="text" id="task" name="task" value="task_1">
+											<input style="display:none" type="text" id="file_name" name="file_name" value="task_1.png"><br><br>
 											<input class="btn btn-outline-dark m-0" type="submit" value="Subscribe">
 										</form>
 									</div>
@@ -48,18 +45,20 @@
 						<div class="col-12">
 							<div class="border rounded p-4 mb-4 h-shadow all-ts bg-white h-translatey-sm">
 								<div class="row align-items-center col-mb-30">
-									<div class="col-lg-3 col-md-6">
-										<h3 class="mb-0 fw-semibold font-secondary">Professional</h3>
+									<div class="col-lg-2 col-md-4">
+										<h3 class="mb-0 fw-semibold font-secondary">Upload</h3>
 									</div>
-									<div class="col-lg-5 col-md-6">
-										<p class="mb-0 text-larger fw-normal">Premium Plugins, SEO Features, Full Access, 100 User Accounts, 1 Year License, 24/7 Support</p>
+									<div class="col-lg-4 col-md-4">
+										<p class="mb-0 text-larger fw-normal">Upload your Solution here</p>
 									</div>
-									<div class="col-lg-2 text-lg-end col-md-6">
-										<h3 class="mb-0 font-secondary">$49.99</h3>
-									</div>
-									<div class="col-lg-2 text-lg-end col-md-6">
-										<a href="#" class="btn btn-outline-dark m-0">Subscribe</a>
-									</div>
+									<form action={{ request.url._url + "/submit" }} method="post" enctype="multipart/form-data" style="width:auto">
+										<div class="col-lg-2 text-lg-end col-md-4" style="display: inline">
+												<input class="btn btn-outline-dark m-1" type="file" id="myfile" name="myfile">
+										</div>
+										<div class="col-lg-2 text-lg-end col-md-2" style="display: inline">
+												<input class="btn btn-outline-dark m-0" type="submit" value="Submit Picture" style="display: inline;">
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
@@ -68,40 +67,20 @@
 							<div class="border rounded p-4 mb-4 h-shadow all-ts bg-white h-translatey-sm">
 								<div class="row align-items-center col-mb-30">
 									<div class="col-lg-3 col-md-6">
-										<h3 class="mb-0 fw-semibold font-secondary">Enterprise</h3>
+										<h3 class="mb-0 fw-semibold font-secondary">Score</h3>
 									</div>
 									<div class="col-lg-5 col-md-6">
-										<p class="mb-0 text-larger fw-normal">55+ Niche Demos, Drag-n-Drop Builder, Premium Plugins, SEO Features, Full Access, 100 User Accounts, 1 Year License, 24/7 Support</p>
+										<p class="mb-0 text-larger fw-normal">Find out your Score here and download the solution file</p>
+									</div>
+									<div class="col-lg-2 col-md-6">
+										<p class="mb-0 text-larger fw-normal">No File yet uploaded</p>
 									</div>
 									<div class="col-lg-2 text-lg-end col-md-6">
-										<h3 class="mb-0 font-secondary">$79.99</h3>
-									</div>
-									<div class="col-lg-2 text-lg-end col-md-6">
-										<a href="#" class="btn btn-outline-dark m-0">Subscribe</a>
+										<button href="#" class="btn btn-outline-dark m-0" type="button" disabled>Download Solution</button>
 									</div>
 								</div>
 							</div>
 						</div>
-
-						<div class="col-12">
-							<div class="border rounded p-4 mb-4 h-shadow all-ts bg-white h-translatey-sm">
-								<div class="row align-items-center col-mb-30">
-									<div class="col-lg-3 col-md-6">
-										<h3 class="mb-0 fw-semibold font-secondary">Ultimate</h3>
-									</div>
-									<div class="col-lg-5 col-md-6">
-										<p class="mb-0 text-larger fw-normal">All Demos, Drag-n-Drop Builder, Premium Plugins, SEO Features, Full Access, 100 User Accounts, 1 Year License, 24/7 Support</p>
-									</div>
-									<div class="col-lg-2 text-lg-end col-md-6">
-										<h3 class="mb-0 font-secondary">$99.99</h3>
-									</div>
-									<div class="col-lg-2 text-lg-end col-md-6">
-										<a href="#" class="btn btn-outline-dark m-0">Subscribe</a>
-									</div>
-								</div>
-							</div>
-						</div>
-
 					</div>
 
 				</div>

@@ -42,7 +42,7 @@
 								<!-- Image: End -->
 								<!-- Decription: Start -->
 								<div class="portfolio-desc col-lg-4 p-4 px-lg-5">
-									<h3><a href="portfolio-single.html">{{ sub_exercise.exercise_name }}</a></h3>
+									<h3><a href={{ url_for('generate_exercise', exercise_name=sub_exercise.exercise_type, sub_exercise_name=sub_exercise.exercise_url) }}>{{ sub_exercise.exercise_name }}</a></h3>
 									<p class="mt-3 d-none d-sm-block">{{ sub_exercise.description }}</p>
 									<a href={{ url_for('generate_exercise', exercise_name=sub_exercise.exercise_type, sub_exercise_name=sub_exercise.exercise_url) }} class="btn btn-secondary d-none d-sm-inline-block"><i class="icon-line-arrow-right"></i><span class="visually-hidden">Details</span></a>
 								</div>
