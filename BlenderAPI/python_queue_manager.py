@@ -1,5 +1,6 @@
 import os
 import re
+import random
 
 from BlenderAPI.blender_api import BlenderApi
 
@@ -100,11 +101,17 @@ class PythonQueueManager:
 
 if __name__ == "__main__":
     python_queue_manager = PythonQueueManager()
-    python_queue_manager.create_temp_pythonfile()
-    python_queue_manager.add_cube((0, 0, 0), (0, 45, 0), 1)
-    # python_queue_manager.add_point_light((4, 1, 6), 1000)
-    python_queue_manager.add_camera((0, 0, 5), (0, 0, 0))
-    python_queue_manager.render_blender_image()
-    python_queue_manager.save_file()
 
-    python_queue_manager.create_new_blender_file_and_execute("empty")
+    for i in range(75):
+        rand_x = random.randint(-45,45)
+        rand_y = random.randint(-45,45)
+        rand_z = random.randint(-45,45)
+
+        python_queue_manager.create_temp_pythonfile()
+        python_queue_manager.add_cube((0, 0, 0), (rand_x, rand_y, rand_z), 1)
+        # python_queue_manager.add_point_light((4, 1, 6), 1000)
+        python_queue_manager.add_camera((0, 0, 5), (0, 0, 0))
+        python_queue_manager.render_blender_image(f"x_{rand_x}_y_{rand_y}_z_{rand_z}_rot.png")
+        python_queue_manager.save_file()
+
+        python_queue_manager.create_new_blender_file_and_execute("empty")

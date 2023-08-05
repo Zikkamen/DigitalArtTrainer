@@ -17,7 +17,7 @@ def draw_crosses(canvas: PIL.ImageDraw.ImageDraw, pos1: tuple, pos2: tuple, leng
 class RandomLines:
     def __init__(self) -> None:
         self.random_position_generator = RandomNumbersGenerator()
-        self.font = ImageFont.truetype(os.path.join(os.path.dirname(__file__), "Arial.ttf"), 75)
+        self.font = ImageFont.truetype(os.path.join(os.path.dirname(__file__), "../../Arial.ttf"), 75)
 
     def draw_random_lines(self, img_task_view: Image, img_answer: Image) -> None:
         draw_task_view = ImageDraw.Draw(img_task_view)

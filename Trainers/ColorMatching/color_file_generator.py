@@ -80,7 +80,7 @@ class ColorMatcherGenerator:
             'saturation': self.saturation_generator.generate_saturation_color,
             'satdark': self.saturation_generator.generate_saturation_and_darken_color
         }
-        self.font = ImageFont.truetype(os.path.join(os.path.dirname(__file__), "Arial.ttf"), 75)
+        self.font = ImageFont.truetype(os.path.join(os.path.dirname(__file__), "../../Arial.ttf"), 75)
 
     def generate_exercise(self, img_task: Image) -> list:
         draw_task = ImageDraw.Draw(img_task)

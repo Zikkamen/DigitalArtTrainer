@@ -79,3 +79,48 @@ INSERT INTO exercise_information(exercise_type, sub_exercise_type, exercise_task
     '',
     'Open the task.png file in a gallery. Try and replicate the lines in your Painting Tool without tracing it. Export your answer into a png.'
 );
+INSERT INTO exercise_information(exercise_type, sub_exercise_type, exercise_tasks, exercise_name, exercise_misc_files, exercise_description) VALUES
+(
+    '3DRealm',
+    'cube_x_rot',
+    'task_1.png;empty.png',
+    'Cube rotated up/down',
+    '',
+    'Open the task and draw how the cube is rotated in the direction. Reminder: When a Object is nearer to the Camera it is bigger'
+);
+INSERT INTO exercise_information(exercise_type, sub_exercise_type, exercise_tasks, exercise_name, exercise_misc_files, exercise_description) VALUES
+(
+    '3DRealm',
+    'cube_y_rot',
+    'task_1.png;empty.png',
+    'Cube rotated right/left',
+    '',
+    'Open the task and draw how the cube is rotated in the direction. Reminder: When a Object is nearer to the Camera it is bigger'
+);
+INSERT INTO exercise_information(exercise_type, sub_exercise_type, exercise_tasks, exercise_name, exercise_misc_files, exercise_description) VALUES
+(
+    '3DRealm',
+    'cube_z_rot',
+    'task_1.png;empty.png',
+    'Cube rotated counter/clockwise',
+    '',
+    'Open the task and draw how the cube is rotated in the direction. Reminder: When a Object is nearer to the Camera it is bigger'
+);
+INSERT INTO exercise_information(exercise_type, sub_exercise_type, exercise_tasks, exercise_name, exercise_misc_files, exercise_description) VALUES
+(
+    '3DRealm',
+    'cube_x_y_rot',
+    'task_1.png;empty.png',
+    'Cube rotated up/down left/right',
+    '',
+    'Open the task and draw how the cube is rotated in the direction. Reminder: When a Object is nearer to the Camera it is bigger'
+);
+INSERT INTO exercise_information(exercise_type, sub_exercise_type, exercise_tasks, exercise_name, exercise_misc_files, exercise_description) VALUES
+(
+    '3DRealm',
+    'cube_x_y_z_rot',
+    'task_1.png;empty.png',
+    'Cube rotated in all directions',
+    '',
+    'Open the task and draw how the cube is rotated in the direction. Reminder: When a Object is nearer to the Camera it is bigger'
+);

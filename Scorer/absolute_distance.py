@@ -19,3 +19,22 @@ class BitMaskCalculator:
         np_answer_sum_colors_bitmap = np_answer_sum_colors >= 150
 
         return np_answer_sum_colors_bitmap
+
+    def get_bit_mask_score(self, img_submission: Image, img_answer: Image) -> float:
+        np_answer = np.array(img_answer)
+        np_submission = np.array(img_submission)
+
+        np_answer_sum = np.sum(np_answer, axis=2)
+        np_submission_sum = np.sum(np_submission, axis=2)
+
+        np_ans_mask_g = np_answer_sum > 3 * 69
+        np_ans_mask_l = np_answer_sum < 3 * 72
+        np_ans_mask = np_ans_mask_g * np_ans_mask_l
+
+        np_sub_mask_g = np_submission_sum > 3 * 69
+        np_sun_mask_l = np_submission_sum < 3 * 72
+        np_sub_mask = np_sub_mask_g * np_sun_mask_l
+
+        np_diff = np_ans_mask != np_sub_mask
+
+        return float(np.sum(np_diff))

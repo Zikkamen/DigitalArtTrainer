@@ -5,6 +5,7 @@ from WebApp.services.color_matcher_service import ColorMatcherService
 from WebApp.persistence.data_service import DataService
 from WebApp.persistence.file_service import FileService
 from WebApp.services.lineart_service import LineArtService
+from WebApp.services.three_d_service import ThreeDService
 
 
 def get_empty_canvas() -> Image:
@@ -17,7 +18,8 @@ class ArtEvaluatorService:
         self.file_service = FileService()
         self.service_map = {
             'ColorMatcher': ColorMatcherService(),
-            'LineArt': LineArtService()
+            'LineArt': LineArtService(),
+            '3DRealm': ThreeDService()
         }
 
     def get_list_of_exercises(self) -> list:

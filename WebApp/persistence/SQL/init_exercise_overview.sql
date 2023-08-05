@@ -1,8 +1,8 @@
 INSERT INTO exercises_overview(exercise_name, exercise_url, image_url, exercise_description) VALUES
 (
     '3D Training',
-    '3DTrainer',
-    'exercises/3DTrainer.png',
+    '3DRealm',
+    'exercises/3DRealm.png',
     'Trainer to improve your understanding of the 3 Dimensions'
 );
 INSERT INTO exercises_overview(exercise_name, exercise_url, image_url, exercise_description) VALUES

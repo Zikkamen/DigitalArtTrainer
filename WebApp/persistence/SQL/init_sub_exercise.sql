@@ -70,3 +70,43 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
     'Train your Lineart with seeing the picture',
     'LineArt'
 );
+INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_description, exercise_type) VALUES
+(
+    'X Rotation',
+    'cube_x_rot',
+    'exercises/3DRealm/cube_x_rot.png',
+    'Train your understanding of 3D Space',
+    '3DRealm'
+);
+INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_description, exercise_type) VALUES
+(
+    'Y Rotation',
+    'cube_y_rot',
+    'exercises/3DRealm/cube_x_rot.png',
+    'Train your understanding of 3D Space',
+    '3DRealm'
+);
+INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_description, exercise_type) VALUES
+(
+    'Z Rotation',
+    'cube_z_rot',
+    'exercises/3DRealm/cube_z_rot.png',
+    'Train your understanding of 3D Space',
+    '3DRealm'
+);
+INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_description, exercise_type) VALUES
+(
+    'XY Rotation',
+    'cube_x_rot',
+    'exercises/3DRealm/cube_x_y_rot.png',
+    'Train your understanding of 3D Space',
+    '3DRealm'
+);
+INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_description, exercise_type) VALUES
+(
+    'XYZ Rotation',
+    'cube_x_y_z_rot',
+    'exercises/3DRealm/cube_x_y_z_rot.png',
+    'Train your understanding of 3D Space',
+    '3DRealm'
+);

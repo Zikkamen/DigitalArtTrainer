@@ -17,8 +17,6 @@ templates = Jinja2Templates(directory=os.path.join(file_directory, "resources/te
 app.mount("/static", StaticFiles(directory=os.path.join(file_directory, "resources/static")), name="static")
 
 art_evaluator_service = ArtEvaluatorService()
-
-
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
     return templates.TemplateResponse("index.html",
@@ -33,6 +31,7 @@ async def read_exercises(request: Request):
     return templates.TemplateResponse("exercises_overview.html",
                                       {
                                           "request": request,
+                                          "page_name": "Exercises Overview",
                                           "exercise_list": art_evaluator_service.get_list_of_exercises(),
                                           "bread_crumb_list": [(request.url_for("read_root"), "Home"),
                                                                (request.url_for("read_exercises"), "Exercises")]
@@ -44,6 +43,7 @@ async def read_sub_exercises(request: Request, exercise_name: str):
     return templates.TemplateResponse("sub_exercises_view.html",
                                       {
                                           "request": request,
+                                          "page_name": exercise_name,
                                           "sub_exercise_list": art_evaluator_service.get_list_of_sub_exercises(exercise_name),
                                           "exercise_list": art_evaluator_service.get_list_of_exercises(),
                                           "bread_crumb_list": [(request.url_for("read_root"), "Home"),
@@ -96,9 +96,6 @@ async def process_exercise_submission(exercise_id: int, myfile: Annotated[Upload
         raise HTTPException(400, "Please only upload png files")
 
     im_submission = Image.open(myfile.file)
-
-    if im_submission.size != (2480, 3580):
-        raise HTTPException(400, "Wrong Image Dimension. It should be (2480, 3580)")
 
     art_evaluator_service.store_submission(exercise_id, im_submission)
     await art_evaluator_service.generate_score(exercise_id)
