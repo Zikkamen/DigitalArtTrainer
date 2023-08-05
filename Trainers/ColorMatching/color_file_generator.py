@@ -82,7 +82,7 @@ class ColorMatcherGenerator:
         }
         self.font = ImageFont.truetype(os.path.join(os.path.dirname(__file__), "Arial.ttf"), 75)
 
-    def generate_file(self, img_task: Image) -> list:
+    def generate_exercise(self, img_task: Image) -> list:
         draw_task = ImageDraw.Draw(img_task)
         answer_dots = []
 
@@ -137,5 +137,5 @@ if __name__ == "__main__":
     img = Image.new(mode="RGB", size=(2480, 3580), color=(255, 255, 255))
     cmg = ColorMatcherGenerator()
     cmg.use_certain_number_generator('sat_dark')
-    cmg.generate_file(img)
+    cmg.generate_exercise(img)
     img.show()

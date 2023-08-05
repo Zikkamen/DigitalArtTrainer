@@ -46,8 +46,6 @@ async def read_sub_exercises(request: Request, exercise_name: str):
 
 @app.get("/exercises/{exercise_name}/{sub_exercise_name}", response_class=RedirectResponse)
 async def generate_exercise(exercise_name: str, sub_exercise_name: str):
-    print(exercise_name, sub_exercise_name)
-
     exercise_id = art_evaluator_service.generate_exercises(exercise_name, sub_exercise_name)
 
     return f"/exercise/{exercise_id}"
@@ -68,7 +66,6 @@ async def show_exercise(request: Request, exercise_id: int):
 
 @app.post("/exercise/{exercise_id}", response_class=FileResponse)
 async def process_exercise_request(exercise_id: int, file_name: Annotated[str, Form()]):
-    print(file_name)
     file_path = art_evaluator_service.get_file(exercise_id, file_name)
 
     if file_path is None:

@@ -23,7 +23,7 @@ class RandomCurvedLinesGenerator:
     def __int__(self) -> None:
         self.random_position_generator = RandomNumbersGenerator()
 
-    def draw_random_curved_lines(self, img_task: Image, img_answer: Image) -> None:
+    def generate_exercise(self, img_task: Image) -> None:
         for i in range(15):
             draw = aggdraw.Draw(img_task)
 
@@ -41,3 +41,5 @@ class RandomCurvedLinesGenerator:
 
             draw.path(path, pen)
             draw.flush()
+
+        return img_task

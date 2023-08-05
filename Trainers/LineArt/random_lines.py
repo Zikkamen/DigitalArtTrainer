@@ -1,7 +1,7 @@
-import random
+import PIL
 import numpy as np
-
 from PIL import ImageDraw, ImageFont, Image
+
 from random_numbers_generator import RandomNumbersGenerator, generate_random_rgb_color
 
 
@@ -16,8 +16,7 @@ class RandomLines:
     def __int__(self) -> None:
         self.random_position_generator = RandomNumbersGenerator()
 
-    def draw_random_lines(self, img_task: Image, img_task_view: Image, img_answer: Image) -> None:
-        draw_task = ImageDraw.Draw(img_task)
+    def draw_random_lines(self, img_task_view: Image, img_answer: Image) -> None:
         draw_task_view = ImageDraw.Draw(img_task_view)
         draw_answer = ImageDraw.Draw(img_answer)
 
@@ -27,7 +26,6 @@ class RandomLines:
             pos1, pos2 = self.random_position_generator.generate_two_random_pos()
             color = generate_random_rgb_color()
 
-            draw_crosses(draw_task, pos1, pos2, 20, color)
             draw_crosses(draw_task_view, pos1, pos2, 20, color)
 
             draw_task_view.text(pos1, str(i + 1), (50, 50, 50), font)

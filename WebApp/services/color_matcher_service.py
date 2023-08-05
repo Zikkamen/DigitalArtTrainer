@@ -19,7 +19,7 @@ class ColorMatcherService:
 
     def generate_exercise(self, task_img: Image, mode: str) -> int:
         self.cmg.use_certain_number_generator(mode)
-        answer = self.cmg.generate_file(task_img)
+        answer = self.cmg.generate_exercise(task_img)
 
         exercise_id = self.file_service.generate_new_folder()
         self.file_service.save_image(exercise_id, task_img, "task_1.png")
