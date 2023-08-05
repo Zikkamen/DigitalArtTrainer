@@ -7,6 +7,8 @@ from fastapi import FastAPI, Request, Form, HTTPException, status, UploadFile, F
 from fastapi.responses import HTMLResponse, RedirectResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+
+from Models.Web.exercise_info import ExerciseInformation
 from WebApp.art_evaluator_service import ArtEvaluatorService
 
 app = FastAPI()
@@ -26,7 +28,7 @@ async def read_root(request: Request):
 
 @app.get("/exercises", response_class=HTMLResponse)
 async def read_exercises(request: Request):
-    return templates.TemplateResponse("exercises_view.html",
+    return templates.TemplateResponse("exercises_overview.html",
                                       {
                                           "request": request,
                                           "exercise_list": art_evaluator_service.get_list_of_exercises()
@@ -58,13 +60,16 @@ async def show_exercise(request: Request, exercise_id: int):
     if dir_path is None:
         raise HTTPException(status_code=404, detail="This Exercise was not found")
 
-    return templates.TemplateResponse("exercise.html", {"request": request})
+    ex_info = art_evaluator_service.get_exercise_info(exercise_id)
+
+    print(ex_info)
+    return templates.TemplateResponse("exercise.html", {"request": request, "exercise_info": ex_info})
 
 
 @app.post("/exercise/{exercise_id}", response_class=FileResponse)
 async def process_exercise_request(exercise_id: int, file_name: Annotated[str, Form()]):
+    print(file_name)
     file_path = art_evaluator_service.get_file(exercise_id, file_name)
-    print(file_path)
 
     if file_path is None:
         raise HTTPException(status_code=404, detail="Couldn't find file")
@@ -85,6 +90,7 @@ async def process_exercise_submission(exercise_id: int, myfile: Annotated[Upload
     if im_submission.size != (2480, 3580):
         raise HTTPException(400, "Wrong Image Dimension. It should be (2480, 3580)")
 
-    art_evaluator_service.submit_solution(exercise_id, im_submission)
+    art_evaluator_service.store_submission(exercise_id, im_submission)
+    art_evaluator_service.generate_score(exercise_id)
 
     return RedirectResponse(f"/exercise/{exercise_id}", status_code=status.HTTP_303_SEE_OTHER)

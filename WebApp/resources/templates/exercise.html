@@ -15,8 +15,8 @@
 					<div class="row justify-content-center">
 
 						<div class="col-xl-6 col-lg-8 text-center mb-5">
-							<h3 class="h1 fw-bold mb-3">Choose Your Plan</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias veniam autem voluptate dolores suscipit animi praesentium, cupiditate explicabo dolorem quae unde facilis libero dolorum quam hic tenetur ratione quibusdam est.</p>
+							<h3 class="h1 fw-bold mb-3">{{ exercise_info.exercise_name }}</h3>
+							<p>{{ exercise_info.exercise_description }}</p>
 						</div>
 
 					</div>
@@ -32,10 +32,12 @@
 									<div class="col-lg-5 col-md-6">
 										<p class="mb-0 text-larger fw-normal">Download the Task File(s)</p>
 									</div>
-									<div class="col-lg-2 text-lg-end col-md-6">
-										<form action="" method="post">
-											<input style="display:none" type="text" id="file_name" name="file_name" value="task_1.png"><br><br>
-											<input class="btn btn-outline-dark m-0" type="submit" value="Subscribe">
+									<div class="col-lg-2 text-lg-end col-md-6" style="display: inline">
+										<form action="" method="post" style="display: inline">
+											{% for task in exercise_info.tasks_list -%}
+												<input style="display:none" type="text" id="file_name" name="file_name" value={{ task }}>
+												<input class="btn btn-outline-dark m-0" type="submit" value={{ task }}>
+											{% endfor -%}
 										</form>
 									</div>
 								</div>
@@ -66,17 +68,24 @@
 						<div class="col-12">
 							<div class="border rounded p-4 mb-4 h-shadow all-ts bg-white h-translatey-sm">
 								<div class="row align-items-center col-mb-30">
-									<div class="col-lg-3 col-md-6">
+									<div class="col-lg-2 col-md-6">
 										<h3 class="mb-0 fw-semibold font-secondary">Score</h3>
 									</div>
 									<div class="col-lg-5 col-md-6">
 										<p class="mb-0 text-larger fw-normal">Find out your Score here and download the solution file</p>
 									</div>
 									<div class="col-lg-2 col-md-6">
-										<p class="mb-0 text-larger fw-normal">No File yet uploaded</p>
+										{% if exercise_info.score == '' %}
+											<p class="mb-0 text-larger fw-normal">No File yet uploaded</p>
+										{% else %}
+											<p class="mb-0 text-larger fw-normal">{{exercise_info.score}}</p>
+										{% endif %}
 									</div>
 									<div class="col-lg-2 text-lg-end col-md-6">
-										<button href="#" class="btn btn-outline-dark m-0" type="button" disabled>Download Solution</button>
+										<form action="" method="post" style="display: inline">
+											<input style="display:none" type="text" id="file_name_1" name="file_name" value="correction.png">
+											<button href="#" class="btn btn-outline-dark m-0" type="submit" {% if exercise_info.score == '' or exercise_info.score == 'In Progress' %} disabled {% endif %}>Download Solution</button>
+										</form>
 									</div>
 								</div>
 							</div>

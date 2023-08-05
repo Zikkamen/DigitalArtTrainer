@@ -1,8 +1,10 @@
 import psycopg2
 import os
 
-from Models.Web.exercise import Exercise
+from Models.Web.exercise_category import ExerciseCategory
+from Models.Web.exercise_info import ExerciseInformation
 from Models.Web.sub_exercise import SubExercise
+from Models.exercise_info_dto import ExerciseInformationDto
 from WebApp.persistence.settings import Settings
 
 
@@ -71,9 +73,47 @@ class DataService:
     def get_list_of_exercises(self) -> list:
         rows = get_all_elements("exercises_overview")
 
-        return [Exercise(row[1], row[2], row[3], row[4]) for row in rows]
+        return [ExerciseCategory(row[1], row[2], row[3], row[4]) for row in rows]
 
     def get_list_of_sub_exercises(self, exercise: str) -> list:
         rows = get_all_elements_with_condition("sub_exercises", "exercise_type", exercise)
 
         return [SubExercise(row[1], row[2], row[3], row[4], row[5]) for row in rows]
+
+    def add_exercise_info(self, eidto: ExerciseInformationDto) -> None:
+        add_ex_sql = "INSERT INTO exercise_repository(id, owner_id, exercise_type, sub_exercise_type, score, creation_epoch)" \
+                     f"VALUES ({eidto.id}, '{eidto.owner_id}', '{eidto.exercise_type}', '{eidto.sub_exercise_type}', '', {eidto.creation_epoch});"
+
+        execute_statement(add_ex_sql)
+
+    def get_exercise_and_subtype(self, exercise_id: int) -> tuple:
+        get_extype_subextype_sql = f"SELECT exercise_type, sub_exercise_type, score FROM exercise_repository WHERE id = {exercise_id}"
+
+        rows = execute_statement_and_return(get_extype_subextype_sql)
+
+        if len(rows) == 0:
+            print(f"get_extype_subextype_sql for {exercise_id} could not be found")
+            return None, None
+
+        row = rows[0]
+
+        return row[0], row[1], row[2]
+
+    def get_exercise_info(self, exercise_id: int) -> ExerciseInformation:
+        extype, subextype, score = self.get_exercise_and_subtype(exercise_id)
+
+        get_ex_info_sql = f"SELECT * FROM exercise_information WHERE exercise_type = '{extype}' AND sub_exercise_type = '{subextype}'"
+
+        rows = execute_statement_and_return(get_ex_info_sql)
+        if len(rows) == 0:
+            print(f"get_ex_info_sql for {exercise_id} could not be found")
+            raise None
+
+        row = rows[0]
+
+        return ExerciseInformation(row[4], row[3].split(";"), row[6], score)
+
+    def update_score(self, exercise_id: int, new_score: str) -> None:
+        sql_update_score = f"UPDATE exercise_repository SET score = '{new_score}' WHERE id = '{exercise_id}'"
+
+        execute_statement(sql_update_score)

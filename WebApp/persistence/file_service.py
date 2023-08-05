@@ -17,7 +17,7 @@ class FileService:
         self.file_directory_persistence = os.path.join(self.file_directory, "files")
         self.file_directory_exercise = os.path.join(self.file_directory_persistence, "exercise")
 
-    def get_file(self, exercise_id: int, file_name: str) -> str:
+    def get_filepath(self, exercise_id: int, file_name: str) -> str:
         cur_file = os.path.join(self.file_directory_exercise, f"{exercise_id}/{file_name}")
 
         if not os.path.exists(cur_file):

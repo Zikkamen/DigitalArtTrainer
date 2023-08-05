@@ -1,4 +1,5 @@
 import numpy as np
+from PIL import Image
 
 from Models.colour_matcher_score import ColourMatcherScore
 
@@ -25,6 +26,20 @@ class ColorMatcherScorer:
         np_single_scores = np.sum(self.penalty_function(np_difference), axis=1)
 
         return ColourMatcherScore(float(np.sum(np_single_scores)), np_single_scores)
+
+    def score_files(self, sol_list: list, sub_img: Image):
+        sub_im = np.array(sub_img)
+
+        sub_array = []
+        sol_array = []
+
+        for colour_point in sol_list:
+            sol_array.append(colour_point.color)
+
+            y, x = colour_point.position
+            sub_array.append(sub_im[x, y])
+
+        return self.calculate_difference(np.array(sub_array), np.array(sol_array))
 
 
 if __name__ == "__main__":
