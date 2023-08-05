@@ -3,7 +3,7 @@ import numpy as np
 import aggdraw
 
 from PIL import Image
-from random_numbers_generator import RandomNumbersGenerator, generate_random_rgb_color
+from Trainers.LineArt.random_numbers_generator import RandomNumbersGenerator, generate_random_rgb_color
 
 
 def generate_vector_and_normal(pos1: np.array, pos2: np.array):
@@ -20,14 +20,14 @@ def generate_two_positions(pos: np.array, vec: np.array, norm: np.array) -> tupl
 
 
 class RandomCurvedLinesGenerator:
-    def __int__(self) -> None:
+    def __init__(self) -> None:
         self.random_position_generator = RandomNumbersGenerator()
 
-    def generate_exercise(self, img_task: Image) -> None:
+    def generate_exercise(self, img_task: Image) -> Image:
         for i in range(15):
             draw = aggdraw.Draw(img_task)
 
-            pos_start, pos_end = self.random_position_generator.generate_random_pos()
+            pos_start, pos_end = self.random_position_generator.generate_two_random_pos()
             vec_1, norm_1 = generate_vector_and_normal(pos_start, pos_end)
             p1, p2 = generate_two_positions(pos_start, vec_1, norm_1)
 

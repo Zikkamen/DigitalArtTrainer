@@ -3,7 +3,7 @@ from Trainers.LineArt.random_lines import RandomLines
 
 
 class StraightLineGenerator:
-    def __int__(self) -> None:
+    def __init__(self) -> None:
         self.random_lines_generator = RandomLines()
 
     def generate_exercise(self, img_task: Image) -> Image:

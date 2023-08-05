@@ -1,5 +1,4 @@
 import os
-
 from typing import Annotated
 
 from PIL import Image
@@ -8,7 +7,6 @@ from fastapi.responses import HTMLResponse, RedirectResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-from Models.Web.exercise_info import ExerciseInformation
 from WebApp.art_evaluator_service import ArtEvaluatorService
 
 app = FastAPI()
@@ -23,7 +21,11 @@ art_evaluator_service = ArtEvaluatorService()
 
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse("index.html",
+                                      {
+                                          "request": request,
+                                          "exercise_list": art_evaluator_service.get_list_of_exercises()
+                                      })
 
 
 @app.get("/exercises", response_class=HTMLResponse)
@@ -31,7 +33,9 @@ async def read_exercises(request: Request):
     return templates.TemplateResponse("exercises_overview.html",
                                       {
                                           "request": request,
-                                          "exercise_list": art_evaluator_service.get_list_of_exercises()
+                                          "exercise_list": art_evaluator_service.get_list_of_exercises(),
+                                          "bread_crumb_list": [(request.url_for("read_root"), "Home"),
+                                                               (request.url_for("read_exercises"), "Exercises")]
                                       })
 
 
@@ -40,7 +44,11 @@ async def read_sub_exercises(request: Request, exercise_name: str):
     return templates.TemplateResponse("sub_exercises_view.html",
                                       {
                                           "request": request,
-                                          "sub_exercise_list": art_evaluator_service.get_list_of_sub_exercises(exercise_name)
+                                          "sub_exercise_list": art_evaluator_service.get_list_of_sub_exercises(exercise_name),
+                                          "exercise_list": art_evaluator_service.get_list_of_exercises(),
+                                          "bread_crumb_list": [(request.url_for("read_root"), "Home"),
+                                                               (request.url_for("read_exercises"), "Exercises"),
+                                                               (request.url_for("read_sub_exercises", exercise_name=exercise_name), "Categories")]
                                       })
 
 
@@ -61,7 +69,12 @@ async def show_exercise(request: Request, exercise_id: int):
     ex_info = art_evaluator_service.get_exercise_info(exercise_id)
 
     print(ex_info)
-    return templates.TemplateResponse("exercise.html", {"request": request, "exercise_info": ex_info})
+    return templates.TemplateResponse("exercise.html",
+                                      {
+                                          "request": request,
+                                          "exercise_info": ex_info,
+                                          "exercise_list": art_evaluator_service.get_list_of_exercises()
+                                      })
 
 
 @app.post("/exercise/{exercise_id}", response_class=FileResponse)
@@ -88,6 +101,6 @@ async def process_exercise_submission(exercise_id: int, myfile: Annotated[Upload
         raise HTTPException(400, "Wrong Image Dimension. It should be (2480, 3580)")
 
     art_evaluator_service.store_submission(exercise_id, im_submission)
-    art_evaluator_service.generate_score(exercise_id)
+    await art_evaluator_service.generate_score(exercise_id)
 
     return RedirectResponse(f"/exercise/{exercise_id}", status_code=status.HTTP_303_SEE_OTHER)

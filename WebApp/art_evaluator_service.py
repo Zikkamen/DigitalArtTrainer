@@ -4,6 +4,7 @@ from Models.Web.exercise_info import ExerciseInformation
 from WebApp.services.color_matcher_service import ColorMatcherService
 from WebApp.persistence.data_service import DataService
 from WebApp.persistence.file_service import FileService
+from WebApp.services.lineart_service import LineArtService
 
 
 def get_empty_canvas() -> Image:
@@ -14,9 +15,9 @@ class ArtEvaluatorService:
     def __init__(self) -> None:
         self.data_repo = DataService()
         self.file_service = FileService()
-        self.clm_service = ColorMatcherService()
         self.service_map = {
-            'ColorMatcher': self.clm_service,
+            'ColorMatcher': ColorMatcherService(),
+            'LineArt': LineArtService()
         }
 
     def get_list_of_exercises(self) -> list:
@@ -48,7 +49,7 @@ class ArtEvaluatorService:
         self.file_service.save_image(exercise_id, img, "submission.png")
         self.data_repo.update_score(exercise_id, "In Progress")
 
-    def generate_score(self, exercise_id) -> None:
+    async def generate_score(self, exercise_id) -> None:
         extype, subextype, score = self.data_repo.get_exercise_and_subtype(exercise_id)
 
         self.service_map[extype].score_exercise(exercise_id, subextype)

@@ -7,3 +7,4 @@ class ExerciseInformation:
     tasks_list: list
     exercise_description: str
     score: str
+    category: str

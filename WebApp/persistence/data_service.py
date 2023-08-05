@@ -111,7 +111,7 @@ class DataService:
 
         row = rows[0]
 
-        return ExerciseInformation(row[4], row[3].split(";"), row[6], score)
+        return ExerciseInformation(row[4], row[3].split(";"), row[6], score, subextype)
 
     def update_score(self, exercise_id: int, new_score: str) -> None:
         sql_update_score = f"UPDATE exercise_repository SET score = '{new_score}' WHERE id = '{exercise_id}'"

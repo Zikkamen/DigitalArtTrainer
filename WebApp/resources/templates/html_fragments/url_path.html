@@ -5,8 +5,10 @@
         <h1>Portfolio</h1>
         <span>Showcase of Our Awesome Works in 1 Column</span>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Portfolio</li>
+            {% for url, name in bread_crumb_list[:-1] -%}
+                <li class="breadcrumb-item"><a href={{url}}>{{name}}</a></li>
+            {% endfor -%}
+            <li class="breadcrumb-item active" aria-current="page">{{bread_crumb_list[-1][1]}}</li>
         </ol>
     </div>
 </section>

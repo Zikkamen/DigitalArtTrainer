@@ -29,8 +29,7 @@ class ManhattanDistanceCalculator:
                 self.np_answer_md[j, i] = min(self.np_answer_md[j, i], lowest_num)
                 lowest_num += 1
 
-    def score_black_white(self, img_submission: Image, img_answer : Image) -> float:
-        np_submission = np.array(img_submission)
+    def generate_bit_mask(self, img_answer: Image) -> np.array:
         self.np_answer_matrix = np.array(img_answer)
 
         np_answer_sum_colors = np.sum(img_answer, axis=2)
@@ -44,5 +43,10 @@ class ManhattanDistanceCalculator:
         self.iterate_through_matrix_y(0, np_answer_shape[1], 1, np_answer_shape)
         self.iterate_through_matrix_y(np_answer_shape[1] - 1, -1, -1, np_answer_shape)
 
-        print(self.np_answer_md)
-        img_answer.show()
+        return self.np_answer_md
+
+    def bit_mask_scorer(self, img_submission: Image, np_answer: np.array) -> float:
+        np_submission = np.sum(np.array(img_submission), axis=2) <= 615
+        np_diff = np_submission * np_answer
+
+        return np.sum(np_diff * 10) + max(0, np.sum(np_submission) - np.sum(np_answer == 0)) / 100

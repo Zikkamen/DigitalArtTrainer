@@ -8,8 +8,7 @@
 						<!-- Logo
 						============================================= -->
 						<div id="logo">
-							<a href="index.html" class="standard-logo" data-dark-logo="images/logo-dark.png"><img src="images/logo.png" alt="Canvas Logo"></a>
-							<a href="index.html" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="images/logo@2x.png" alt="Canvas Logo"></a>
+							<a href={{request.url_for('read_root')}} class="standard-logo" data-dark-logo="images/logo-dark.png"><img src={{request.url_for('static', path="images/logo.png")}} alt="Canvas Logo"></a>
 						</div><!-- #logo end -->
 						<div id="primary-menu-trigger">
 							<svg class="svg-trigger" viewBox="0 0 100 100"><path d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path><path d="m 30,50 h 40"></path><path d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"></path></svg>
@@ -25,9 +24,9 @@
 								<li class="menu-item">
 									<a class="menu-link" href="/exercises"><div>Art Trainers</div></a>
 									<ul class="sub-menu-container">
-										{% for i in range(0,5) -%}
+										{% for exercise in exercise_list -%}
 											<li class="menu-item">
-											<a class="menu-link" href="intro.html#section-niche"><div>Niche Demos</div></a>
+											<a class="menu-link" href={{ request.url_for('read_sub_exercises', exercise_name=exercise.exercise_url) }}><div>{{ exercise.exercise_name }}</div></a>
 										</li>
 										{% endfor -%}
 									</ul>

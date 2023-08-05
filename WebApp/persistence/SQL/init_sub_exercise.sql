@@ -41,7 +41,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_description, exercise_type) VALUES
 (
     'Random Straight Lines (With Overlay)',
-    'randomstraightlineswo',
+    'randomstraightlines_wo',
     'exercises/ColorMatcher/RandomStraightLinesWO.png',
     'Train your Lineart with tracing the picture',
     'LineArt'
@@ -49,7 +49,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_description, exercise_type) VALUES
 (
     'Random Curved Lines (With Overlay)',
-    'randomcurvedlineswO',
+    'randomcurvedlines_wo',
     'exercises/ColorMatcher/RandomCurvedLinesWO.png',
     'Train your Lineart with tracing the picture',
     'LineArt'
@@ -57,7 +57,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_description, exercise_type) VALUES
 (
     'Random Straight Lines (Without Overlay)',
-    'randomstraightlineswoo',
+    'randomstraightlines_woo',
     'exercises/ColorMatcher/RandomStraightLinesWOO.png',
     'Train your Lineart with seeing the picture',
     'LineArt'
@@ -65,7 +65,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_description, exercise_type) VALUES
 (
     'Random Curved Lines (Without Overlay)',
-    'randomcurvedlineswoo',
+    'randomcurvedlines_woo',
     'exercises/ColorMatcher/RandomCurvedLinesWOO.png',
     'Train your Lineart with seeing the picture',
     'LineArt'
