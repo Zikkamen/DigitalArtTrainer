@@ -4,6 +4,7 @@ from Models.Web.exercise_info import ExerciseInformation
 from WebApp.services.color_matcher_service import ColorMatcherService
 from WebApp.persistence.data_service import DataService
 from WebApp.persistence.file_service import FileService
+from WebApp.services.light_service import LightService
 from WebApp.services.lineart_service import LineArtService
 from WebApp.services.three_d_service import ThreeDService
 
@@ -19,7 +20,8 @@ class ArtEvaluatorService:
         self.service_map = {
             'ColorMatcher': ColorMatcherService(),
             'LineArt': LineArtService(),
-            '3DRealm': ThreeDService()
+            '3DRealm': ThreeDService(),
+            'LightShadow': LightService()
         }
 
     def get_list_of_exercises(self) -> list:

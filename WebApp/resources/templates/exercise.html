@@ -33,12 +33,12 @@
 										<p class="mb-0 text-larger fw-normal">Download the Task File(s)</p>
 									</div>
 									<div class="col-lg-2 text-lg-end col-md-6" style="display: inline">
-										<form action="" method="post" style="display: inline">
-											{% for task in exercise_info.tasks_list -%}
-												<input style="display:none" type="text" id="file_name" name="file_name" value={{ task }}>
-												<input class="btn btn-outline-dark m-0" type="submit" value={{ task }}>
-											{% endfor -%}
-										</form>
+										{% for task in exercise_info.tasks_list -%}
+											<form action="" method="post" style="display: inline">
+													<input style="display:none" type="text" name="file_name" value={{ task }}>
+													<input class="btn btn-outline-dark m-0" type="submit" value={{ task }}>
+											</form>
+										{% endfor -%}
 									</div>
 								</div>
 							</div>

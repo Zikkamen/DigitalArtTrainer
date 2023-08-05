@@ -98,20 +98,20 @@ class PythonQueueManager:
         print(self.python_file_path)
         self.blender_api.run_blender_command(self.python_file_path)
 
+    def change_blender_api(self, blender_api: BlenderApi) -> None:
+        self.blender_api = blender_api
+
 
 if __name__ == "__main__":
     python_queue_manager = PythonQueueManager()
 
-    for i in range(75):
-        rand_x = random.randint(-45,45)
-        rand_y = random.randint(-45,45)
-        rand_z = random.randint(-45,45)
+    for i in range(-2, 3):
+        for j in range(-2, 3):
+            python_queue_manager.create_temp_pythonfile()
+            python_queue_manager.add_cube((0, 0, 0), (0, 0, 0), 1)
+            python_queue_manager.add_point_light((i, j, 2), 100)
+            python_queue_manager.add_camera((0, 0, 8), (0, 0, 0))
+            python_queue_manager.render_blender_image(f"x_{i}_y_{j}.png")
+            python_queue_manager.save_file()
 
-        python_queue_manager.create_temp_pythonfile()
-        python_queue_manager.add_cube((0, 0, 0), (rand_x, rand_y, rand_z), 1)
-        # python_queue_manager.add_point_light((4, 1, 6), 1000)
-        python_queue_manager.add_camera((0, 0, 5), (0, 0, 0))
-        python_queue_manager.render_blender_image(f"x_{rand_x}_y_{rand_y}_z_{rand_z}_rot.png")
-        python_queue_manager.save_file()
-
-        python_queue_manager.create_new_blender_file_and_execute("empty")
+            python_queue_manager.create_new_blender_file_and_execute("plane")

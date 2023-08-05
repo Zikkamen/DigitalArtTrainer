@@ -110,3 +110,27 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
     'Train your understanding of 3D Space',
     '3DRealm'
 );
+INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_description, exercise_type) VALUES
+(
+    'X Position',
+    'light_x_pos',
+    'exercises/3DRealm/light_x_pos.png',
+    'Learn how light and shadow work',
+    'LightShadow'
+);
+INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_description, exercise_type) VALUES
+(
+    'Y Position',
+    'light_y_pos',
+    'exercises/3DRealm/light_y_pos.png',
+    'Learn how light and shadow work',
+    'LightShadow'
+);
+INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_description, exercise_type) VALUES
+(
+    'XY Position',
+    'light_x_y_pos',
+    'exercises/3DRealm/light_x_y_pos.png',
+    'Learn how light and shadow work',
+    'LightShadow'
+);

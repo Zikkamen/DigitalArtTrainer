@@ -26,6 +26,11 @@ class BlenderFileService:
 
         return im.convert('RGB')
 
+    def get_zero_image_light(self):
+        im = Image.open(os.path.join(self.file_directory_blender_files, f"light_x_pos/x_0.png"))
+
+        return im.convert('RGB')
+
 
 if __name__ == "__main__":
     bfs = BlenderFileService()

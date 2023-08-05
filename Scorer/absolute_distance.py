@@ -38,3 +38,9 @@ class BitMaskCalculator:
         np_diff = np_ans_mask != np_sub_mask
 
         return float(np.sum(np_diff))
+
+    def get_abs_dist_score(self, img_submission: Image, img_answer: Image) -> float:
+        np_answer = np.array(img_answer)
+        np_submission = np.array(img_submission)
+
+        return float(np.sum(np.abs(np_answer - np_submission)))

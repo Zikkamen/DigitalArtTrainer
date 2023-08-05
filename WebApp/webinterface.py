@@ -79,6 +79,7 @@ async def show_exercise(request: Request, exercise_id: int):
 
 @app.post("/exercise/{exercise_id}", response_class=FileResponse)
 async def process_exercise_request(exercise_id: int, file_name: Annotated[str, Form()]):
+    print(file_name)
     file_path = art_evaluator_service.get_file(exercise_id, file_name)
 
     if file_path is None:
