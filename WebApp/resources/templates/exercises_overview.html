@@ -25,13 +25,13 @@
 									<div class="portfolio-image">
 										<div class="grid-inner">
 											<a href="portfolio-single.html">
-												<img src="images/portfolio/1/1.jpg" alt="Open Imagination">
+												<img src={{request.url_for('static', path=exercise.picture_url)}} alt="Open Imagination">
 											</a>
 											<!-- Overlay: Start -->
 											<div class="bg-overlay">
 												<div class="bg-overlay-content dark" data-hover-animate="fadeIn">
-													<a href="images/portfolio/full/1.jpg" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-lightbox="image" title="Image"><i class="icon-line-plus"></i></a>
-													<a href="portfolio-single.html" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350"><i class="icon-line-ellipsis"></i></a>
+													<a href={{request.url_for('static', path=exercise.picture_url)}} class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-lightbox="image" title="Image"><i class="icon-line-plus"></i></a>
+													<a href={{ request.url_for('read_sub_exercises', exercise_name=exercise.exercise_url) }} class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350"><i class="icon-line-ellipsis"></i></a>
 												</div>
 												<div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
 											</div>
