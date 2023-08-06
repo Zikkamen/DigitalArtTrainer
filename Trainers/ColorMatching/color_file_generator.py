@@ -121,7 +121,7 @@ class ColorMatcherGenerator:
         self.darkness_generator.set_first_datapoint(True)
         self.saturation_generator.set_first_datapoint(True)
 
-    def write_score_card(self, img_sol: Image, scores: list):
+    def write_score_card(self, img_sol: Image, scores: list) -> None:
         buffer_y = 130
         buffer_x = 35
         counter = 0
