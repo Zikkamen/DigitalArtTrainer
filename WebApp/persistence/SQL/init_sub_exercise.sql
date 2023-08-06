@@ -2,7 +2,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 (
     'Hue',
     'hue',
-    'exercises/ColorMatcher/hue.png',
+    'images/exercises/ColorMatcher/hue.png',
     'Train your Hue Matching Skills',
     'ColorMatcher'
 );
@@ -10,7 +10,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 (
     'Saturation',
     'saturation',
-    'exercises/ColorMatcher/saturation.png',
+    'images/exercises/ColorMatcher/saturation.png',
     'Train your Saturation Matching Skills',
     'ColorMatcher'
 );
@@ -18,7 +18,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 (
     'Darkness',
     'darkness',
-    'exercises/ColorMatcher/darkness.png',
+    'images/exercises/ColorMatcher/darkness.png',
     'Train your Darkness Matching Skills',
     'ColorMatcher'
 );
@@ -26,7 +26,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 (
     'Saturation and Darkness',
     'satdark',
-    'exercises/ColorMatcher/SatDark.png',
+    'images/exercises/ColorMatcher/SatDark.png',
     'Train your Saturation and Darkness Matching Skills',
     'ColorMatcher'
 );
@@ -34,7 +34,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 (
     'Colour',
     'colour',
-    'exercises/ColorMatcher/colour.png',
+    'images/exercises/ColorMatcher/colour.png',
     'Train your Colour Matching Skills',
     'ColorMatcher'
 );
@@ -42,7 +42,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 (
     'Random Straight Lines (With Overlay)',
     'randomstraightlines_wo',
-    'exercises/ColorMatcher/RandomStraightLinesWO.png',
+    'images/exercises/LineArt/RandomStraightLinesWO.png',
     'Train your Lineart with tracing the picture',
     'LineArt'
 );
@@ -50,7 +50,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 (
     'Random Curved Lines (With Overlay)',
     'randomcurvedlines_wo',
-    'exercises/ColorMatcher/RandomCurvedLinesWO.png',
+    'images/exercises/LineArt/RandomCurvedLinesWO.png',
     'Train your Lineart with tracing the picture',
     'LineArt'
 );
@@ -58,7 +58,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 (
     'Random Straight Lines (Without Overlay)',
     'randomstraightlines_woo',
-    'exercises/ColorMatcher/RandomStraightLinesWOO.png',
+    'images/exercises/LineArt/RandomStraightLinesWOO.png',
     'Train your Lineart with seeing the picture',
     'LineArt'
 );
@@ -66,7 +66,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 (
     'Random Curved Lines (Without Overlay)',
     'randomcurvedlines_woo',
-    'exercises/ColorMatcher/RandomCurvedLinesWOO.png',
+    'images/exercises/LineArt/RandomCurvedLinesWOO.png',
     'Train your Lineart with seeing the picture',
     'LineArt'
 );
@@ -74,7 +74,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 (
     'X Rotation',
     'cube_x_rot',
-    'exercises/3DRealm/cube_x_rot.png',
+    'images/exercises/3DRealm/cube_x_rot.png',
     'Train your understanding of 3D Space',
     '3DRealm'
 );
@@ -82,7 +82,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 (
     'Y Rotation',
     'cube_y_rot',
-    'exercises/3DRealm/cube_x_rot.png',
+    'images/exercises/3DRealm/cube_x_rot.png',
     'Train your understanding of 3D Space',
     '3DRealm'
 );
@@ -90,7 +90,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 (
     'Z Rotation',
     'cube_z_rot',
-    'exercises/3DRealm/cube_z_rot.png',
+    'images/exercises/3DRealm/cube_z_rot.png',
     'Train your understanding of 3D Space',
     '3DRealm'
 );
@@ -98,7 +98,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 (
     'XY Rotation',
     'cube_x_rot',
-    'exercises/3DRealm/cube_x_y_rot.png',
+    'images/exercises/3DRealm/cube_x_y_rot.png',
     'Train your understanding of 3D Space',
     '3DRealm'
 );
@@ -106,7 +106,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 (
     'XYZ Rotation',
     'cube_x_y_z_rot',
-    'exercises/3DRealm/cube_x_y_z_rot.png',
+    'images/exercises/3DRealm/cube_x_y_z_rot.png',
     'Train your understanding of 3D Space',
     '3DRealm'
 );
@@ -114,7 +114,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 (
     'X Position',
     'light_x_pos',
-    'exercises/3DRealm/light_x_pos.png',
+    'images/exercises/LightShadow/light_x_pos.png',
     'Learn how light and shadow work',
     'LightShadow'
 );
@@ -122,7 +122,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 (
     'Y Position',
     'light_y_pos',
-    'exercises/3DRealm/light_y_pos.png',
+    'images/exercises/LightShadow/light_y_pos.png',
     'Learn how light and shadow work',
     'LightShadow'
 );
@@ -130,7 +130,7 @@ INSERT INTO sub_exercises(exercise_name, exercise_url, image_url, exercise_descr
 (
     'XY Position',
     'light_x_y_pos',
-    'exercises/3DRealm/light_x_y_pos.png',
+    'images/exercises/LightShadow/light_x_y_pos.png',
     'Learn how light and shadow work',
     'LightShadow'
 );
