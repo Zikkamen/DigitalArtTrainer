@@ -13,7 +13,7 @@ services:
   fastapi:
     build: .
     ports:
-      - "8000:8000"
+      - "7654:8000"
     restart: always
     depends_on:
       db:
@@ -23,7 +23,7 @@ services:
     image: adminer
     restart: always
     ports:
-      - "8080:8080"
+      - "7543:8080"
 
 volumes:
   db:
